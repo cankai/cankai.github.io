@@ -63,8 +63,8 @@ void apply(Nameval* listp, void(*fn)(Nameval*,void*), void* arg)
 
 int itemcmp(void* item1, void* item2)
 {
-    Nameval* i1 = item1;
-    Nameval* i2 = item2;
+    Nameval* i1 = (Nameval*)item1;
+    Nameval* i2 = (Nameval*)item2;
     if(i1->value == i2->value)
         return 0;
     else if(i1->value > i2->value)
@@ -217,4 +217,8 @@ Nameval* revers(Nameval* listp)
         listp2 = next;
     }
     return listp1;;
+}
+int main()
+{
+    return 0;
 }
