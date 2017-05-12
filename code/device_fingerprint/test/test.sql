@@ -1,0 +1,20 @@
+CREATE TABLE device_fingerprint_jsoni4 (
+id  SERIAL,
+deviceid varchar(64) NOT NULL DEFAULT '',
+deviceid2 varchar(64) NOT NULL DEFAULT '',
+data json,
+appid varchar(64) NOT NULL default '',
+clientno varchar(64) NOT NULL default '',
+eventtype smallint NOT NULL default '2',
+credentialtype varchar(32) NOT NULL default '',
+credential varchar(64) NOT NULL default '',
+fullname varchar(64) NOT NULL default '',
+sex smallint NOT NULL default '2',
+username varchar(32) NOT NULL default '',
+phoneno varchar(16) NOT NULL default '',
+clientip varchar(16) NOT NULL default '',
+eventid varchar(16) NOT NULL default '',
+createtime timestamp  NOT NULL,
+lastvisit timestamp  NOT NULL,
+PRIMARY KEY  (id));
+

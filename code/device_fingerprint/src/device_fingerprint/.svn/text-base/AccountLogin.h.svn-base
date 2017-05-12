@@ -1,0 +1,25 @@
+#ifndef _ACCOUNT_LOGIN_H_
+#define _ACCOUNT_LOGIN_H_
+
+#include "common/Logger.h"
+#include <stdint.h>
+#include <common/Json.hpp>
+#include "fastcgi/fcgiapp.h"
+#include "HTTPRequest.h"
+
+class AccountLogin:public HTTPRequest
+{
+public:
+    AccountLogin(const std::string  &cmd_type);
+    virtual ~AccountLogin();
+    virtual void doAssembleParam();
+
+    virtual int handle(json::Value& jsPara);
+
+private:
+    //rt
+    std::string  res;//accept/refuse/review
+    std::string  devf;//设备指纹
+    DECL_LOGGER(logger);
+};
+#endif //_ACCOUNT_LOGIN_H_

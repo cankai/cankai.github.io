@@ -1,0 +1,148 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Array	Json.cpp	/^Array::Array()$/;"	f	class:Array
+Array	Json.cpp	/^Array::Array(const Array& a) : mValues(a.mValues)$/;"	f	class:Array
+Array	Json.hpp	/^    class Array$/;"	c	namespace:json
+ArrayVal	Json.hpp	/^        ArrayVal,$/;"	e	enum:json::ValueType
+BoolVal	Json.hpp	/^        BoolVal$/;"	e	enum:json::ValueType
+Clear	Json.cpp	/^void Array::Clear()$/;"	f	class:Array
+Clear	Json.cpp	/^void Object::Clear()$/;"	f	class:Object
+Clear	Json.cpp	/^void Value::Clear()$/;"	f	class:Value
+Deserialize	Json.cpp	/^Value json::Deserialize(const std::string &str)$/;"	f	class:json
+DeserializeArray	Json.cpp	/^static Value DeserializeArray(std::string& str, std::stack<StackDepthType>& depth_stack)$/;"	f	file:
+DeserializeInternal	Json.cpp	/^static Value DeserializeInternal(const std::string& _str, std::stack<StackDepthType>& depth_stack)$/;"	f	file:
+DeserializeObj	Json.cpp	/^static Value DeserializeObj(const std::string& _str, std::stack<StackDepthType>& depth_stack)$/;"	f	file:
+DeserializeValue	Json.cpp	/^static Value DeserializeValue(std::string& str, bool* had_error, std::stack<StackDepthType>& depth_stack)$/;"	f	file:
+DoubleVal	Json.hpp	/^        DoubleVal,$/;"	e	enum:json::ValueType
+FloatVal	Json.hpp	/^        FloatVal,$/;"	e	enum:json::ValueType
+GetEndOfArrayOrObj	Json.cpp	/^static size_t GetEndOfArrayOrObj(const std::string& str, std::stack<StackDepthType>& depth_stack)$/;"	f	file:
+GetQuotePos	Json.cpp	/^static size_t GetQuotePos(const std::string& str, size_t start_pos = 0)$/;"	f	file:
+GetType	Json.hpp	/^            ValueType GetType() const {return mValueType;}$/;"	f	class:json::Value
+HasKey	Json.cpp	/^bool Object::HasKey(const std::string& key) const$/;"	f	class:Object
+HasKey	Json.cpp	/^bool Value::HasKey(const std::string &key) const$/;"	f	class:Value
+HasKeys	Json.cpp	/^int Object::HasKeys(const char** keys, int key_count) const$/;"	f	class:Object
+HasKeys	Json.cpp	/^int Object::HasKeys(const std::vector<std::string>& keys) const$/;"	f	class:Object
+HasKeys	Json.cpp	/^int Value::HasKeys(const char **keys, int key_count) const$/;"	f	class:Value
+HasKeys	Json.cpp	/^int Value::HasKeys(const std::vector<std::string> &keys) const$/;"	f	class:Value
+HasValue	Json.cpp	/^bool Array::HasValue(const Value& v) const$/;"	f	class:Array
+InArray	Json.cpp	/^        InArray$/;"	e	enum:json::StackDepthType	file:
+InObject	Json.cpp	/^        InObject,$/;"	e	enum:json::StackDepthType	file:
+IntVal	Json.hpp	/^        IntVal,$/;"	e	enum:json::ValueType
+IsNumeric	Json.hpp	/^            bool IsNumeric() const             {return (mValueType == IntVal) || (mValueType == DoubleVal) || (mValueType == FloatVal);}$/;"	f	class:json::Value
+IsString	Json.hpp	/^            bool IsString() const             {return (mValueType == StringVal);}$/;"	f	class:json::Value
+NULLVal	Json.hpp	/^        NULLVal,$/;"	e	enum:json::ValueType
+Object	Json.cpp	/^Object::Object()$/;"	f	class:Object
+Object	Json.cpp	/^Object::Object(const Object& obj) : mValues(obj.mValues)$/;"	f	class:Object
+Object	Json.hpp	/^    class Object$/;"	c	namespace:json
+ObjectVal	Json.hpp	/^        ObjectVal,$/;"	e	enum:json::ValueType
+Serialize	Json.cpp	/^std::string json::Serialize(const Value& v)$/;"	f	class:json
+SerializeArray	Json.cpp	/^std::string SerializeArray(const Array& a)$/;"	f
+SerializeValue	Json.cpp	/^std::string SerializeValue(const Value& v)$/;"	f
+StackDepthType	Json.cpp	/^    enum StackDepthType$/;"	g	namespace:json	file:
+StringVal	Json.hpp	/^        StringVal,$/;"	e	enum:json::ValueType
+ToArray	Json.cpp	/^Array Value::ToArray() const        $/;"	f	class:Value
+ToBool	Json.cpp	/^bool Value::ToBool() const        $/;"	f	class:Value
+ToBool	Json.hpp	/^            bool                ToBool(bool def) const                    {return (mValueType == BoolVal) ? mBoolVal : def;}$/;"	f	class:json::Value
+ToDouble	Json.cpp	/^double Value::ToDouble() const    $/;"	f	class:Value
+ToDouble	Json.hpp	/^            double                ToDouble(double def) const                {return IsNumeric() ? mDoubleVal : def;}$/;"	f	class:json::Value
+ToFloat	Json.cpp	/^float Value::ToFloat() const        $/;"	f	class:Value
+ToFloat	Json.hpp	/^            float                ToFloat(float def) const                {return IsNumeric() ? mFloatVal : def;}$/;"	f	class:json::Value
+ToInt	Json.cpp	/^int Value::ToInt() const        $/;"	f	class:Value
+ToInt	Json.hpp	/^            int                    ToInt(int def) const                    {return IsNumeric() ? mIntVal : def;}$/;"	f	class:json::Value
+ToObject	Json.cpp	/^Object Value::ToObject() const    $/;"	f	class:Value
+ToString	Json.cpp	/^const std::string& Value::ToString() const    $/;"	f	class:Value
+ToString	Json.hpp	/^            const std::string&    ToString(const std::string& def) const    {return (mValueType == StringVal) ? mStringVal : def;}$/;"	f	class:json::Value
+Trim	Json.cpp	/^static std::string Trim(const std::string& str)$/;"	f	file:
+UnescapeJSONString	Json.cpp	/^static std::string UnescapeJSONString(const std::string& str)$/;"	f	file:
+Value	Json.cpp	/^Value::Value(const Value& v) : mValueType(v.mValueType)$/;"	f	class:Value
+Value	Json.hpp	/^            Value()                     : mValueType(NULLVal), mIntVal(0), mFloatVal(0), mDoubleVal(0), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(bool v)                : mValueType(BoolVal), mIntVal(), mFloatVal(), mDoubleVal(), mBoolVal(v) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(const Array& v)        : mValueType(ArrayVal), mIntVal(), mFloatVal(), mDoubleVal(), mArrayVal(v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(const Object& v)        : mValueType(ObjectVal), mIntVal(), mFloatVal(), mDoubleVal(), mObjectVal(v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(const char* v)        : mValueType(StringVal), mIntVal(), mFloatVal(), mDoubleVal(), mStringVal(v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(const std::string& v) : mValueType(StringVal), mIntVal(), mFloatVal(), mDoubleVal(), mStringVal(v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(double v)                : mValueType(DoubleVal), mIntVal((int)v), mFloatVal((float)v), mDoubleVal(v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(float v)                : mValueType(FloatVal), mIntVal((int)v), mFloatVal(v), mDoubleVal((double)v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^            Value(int v)                : mValueType(IntVal), mIntVal(v), mFloatVal((float)v), mDoubleVal((double)v), mBoolVal(false) {}$/;"	f	class:json::Value
+Value	Json.hpp	/^    class Value$/;"	c	namespace:json
+ValueMap	Json.hpp	/^            typedef std::map<std::string, Value> ValueMap;$/;"	t	class:json::Object
+ValueType	Json.hpp	/^    enum ValueType$/;"	g	namespace:json
+ValueVector	Json.hpp	/^            typedef std::vector<Value> ValueVector;$/;"	t	class:json::Array
+__SUPER_EASY_JSON_H__	Json.hpp	234;"	d
+_stricmp	Json.cpp	15;"	d	file:
+base64Pre	main.cpp	/^int base64Pre(const std::string & str64, char* des)$/;"	f
+begin	Json.cpp	/^Array::ValueVector::const_iterator Array::begin() const$/;"	f	class:Array
+begin	Json.cpp	/^Array::ValueVector::iterator Array::begin()$/;"	f	class:Array
+begin	Json.cpp	/^Object::ValueMap::const_iterator Object::begin() const$/;"	f	class:Object
+begin	Json.cpp	/^Object::ValueMap::iterator Object::begin()$/;"	f	class:Object
+end	Json.cpp	/^Array::ValueVector::const_iterator Array::end() const$/;"	f	class:Array
+end	Json.cpp	/^Array::ValueVector::iterator Array::end()$/;"	f	class:Array
+end	Json.cpp	/^Object::ValueMap::const_iterator Object::end() const$/;"	f	class:Object
+end	Json.cpp	/^Object::ValueMap::iterator Object::end()$/;"	f	class:Object
+find	Json.cpp	/^Array::ValueVector::const_iterator Array::find(const Value& v) const$/;"	f	class:Array
+find	Json.cpp	/^Array::ValueVector::iterator Array::find(const Value& v)$/;"	f	class:Array
+find	Json.cpp	/^Object::ValueMap::const_iterator Object::find(const std::string& key) const$/;"	f	class:Object
+find	Json.cpp	/^Object::ValueMap::iterator Object::find(const std::string& key)$/;"	f	class:Object
+insert	Json.cpp	/^void Array::insert(size_t index, const Value& v)$/;"	f	class:Array
+json	Json.cpp	/^namespace json$/;"	n	file:
+json	Json.hpp	/^namespace json$/;"	n
+mArrayVal	Json.hpp	/^            Array                            mArrayVal;$/;"	m	class:json::Value
+mBoolVal	Json.hpp	/^            bool                             mBoolVal;$/;"	m	class:json::Value
+mDoubleVal	Json.hpp	/^            double                             mDoubleVal;$/;"	m	class:json::Value
+mFloatVal	Json.hpp	/^            float                            mFloatVal;$/;"	m	class:json::Value
+mIntVal	Json.hpp	/^            int                                mIntVal;$/;"	m	class:json::Value
+mObjectVal	Json.hpp	/^            Object                            mObjectVal;$/;"	m	class:json::Value
+mStringVal	Json.hpp	/^            std::string                        mStringVal;$/;"	m	class:json::Value
+mValueType	Json.hpp	/^            ValueType                        mValueType;$/;"	m	class:json::Value
+mValues	Json.hpp	/^            ValueMap    mValues;$/;"	m	class:json::Object
+mValues	Json.hpp	/^            ValueVector                mValues;$/;"	m	class:json::Array
+main	main.cpp	/^int main()$/;"	f
+operator !=	Json.hpp	/^            inline friend bool operator !=(const Array& lhs, const Array& rhs) {return !(lhs == rhs);}$/;"	f	class:json::Array
+operator !=	Json.hpp	/^            inline friend bool operator !=(const Object& lhs, const Object& rhs)     {return !(lhs == rhs);}$/;"	f	class:json::Object
+operator !=	Json.hpp	/^            inline friend bool operator !=(const Value& lhs, const Value& rhs)     {return !(lhs == rhs);}$/;"	f	class:json::Value
+operator <	Json.hpp	/^    inline bool operator <(const Array& lhs, const Array& rhs)$/;"	f	namespace:json
+operator <	Json.hpp	/^    inline bool operator <(const Object& lhs, const Object& rhs)$/;"	f	namespace:json
+operator <	Json.hpp	/^    inline bool operator <(const Value& lhs, const Value& rhs)$/;"	f	namespace:json
+operator <=	Json.hpp	/^            inline friend bool operator <=(const Array& lhs, const Array& rhs)    {return !operator>(lhs, rhs);}$/;"	f	class:json::Array
+operator <=	Json.hpp	/^            inline friend bool operator <=(const Object& lhs, const Object& rhs)    {return !operator>(lhs, rhs);}$/;"	f	class:json::Object
+operator <=	Json.hpp	/^            inline friend bool operator <=(const Value& lhs, const Value& rhs)    {return !operator>(lhs, rhs);}$/;"	f	class:json::Value
+operator =	Json.cpp	/^Array& Array::operator =(const Array& a)$/;"	f	class:Array
+operator =	Json.cpp	/^Object& Object::operator =(const Object& obj)$/;"	f	class:Object
+operator =	Json.cpp	/^Value& Value::operator =(const Value& v)$/;"	f	class:Value
+operator ==	Json.hpp	/^    inline bool operator ==(const Array& lhs, const Array& rhs)$/;"	f	namespace:json
+operator ==	Json.hpp	/^    inline bool operator ==(const Object& lhs, const Object& rhs)$/;"	f	namespace:json
+operator ==	Json.hpp	/^    inline bool operator ==(const Value& lhs, const Value& rhs)$/;"	f	namespace:json
+operator >	Json.hpp	/^            inline friend bool operator >(const Array& lhs, const Array& rhs)     {return operator<(rhs, lhs);}$/;"	f	class:json::Array
+operator >	Json.hpp	/^            inline friend bool operator >(const Object& lhs, const Object& rhs)     {return operator<(rhs, lhs);}$/;"	f	class:json::Object
+operator >	Json.hpp	/^            inline friend bool operator >(const Value& lhs, const Value& rhs)     {return operator<(rhs, lhs);}$/;"	f	class:json::Value
+operator >=	Json.hpp	/^            inline friend bool operator >=(const Array& lhs, const Array& rhs)    {return !operator<(lhs, rhs);}$/;"	f	class:json::Array
+operator >=	Json.hpp	/^            inline friend bool operator >=(const Object& lhs, const Object& rhs)    {return !operator<(lhs, rhs);}$/;"	f	class:json::Object
+operator >=	Json.hpp	/^            inline friend bool operator >=(const Value& lhs, const Value& rhs)    {return !operator<(lhs, rhs);}$/;"	f	class:json::Value
+operator Array	Json.cpp	/^Value::operator Array() const             $/;"	f	class:Value
+operator Object	Json.cpp	/^Value::operator Object() const         $/;"	f	class:Value
+operator []	Json.cpp	/^Value& Array::operator [](size_t i)$/;"	f	class:Array
+operator []	Json.cpp	/^Value& Object::operator [](const char* key)$/;"	f	class:Object
+operator []	Json.cpp	/^Value& Object::operator [](const std::string& key)$/;"	f	class:Object
+operator []	Json.cpp	/^Value& Value::operator [](const char* key)$/;"	f	class:Value
+operator []	Json.cpp	/^Value& Value::operator [](const std::string& key)$/;"	f	class:Value
+operator []	Json.cpp	/^Value& Value::operator [](size_t idx)$/;"	f	class:Value
+operator []	Json.cpp	/^const Value& Array::operator [](size_t i) const$/;"	f	class:Array
+operator []	Json.cpp	/^const Value& Object::operator [](const char* key) const$/;"	f	class:Object
+operator []	Json.cpp	/^const Value& Object::operator [](const std::string& key) const$/;"	f	class:Object
+operator []	Json.cpp	/^const Value& Value::operator [](const char* key) const$/;"	f	class:Value
+operator []	Json.cpp	/^const Value& Value::operator [](const std::string& key) const$/;"	f	class:Value
+operator []	Json.cpp	/^const Value& Value::operator [](size_t idx) const$/;"	f	class:Value
+operator bool	Json.cpp	/^Value::operator bool() const             $/;"	f	class:Value
+operator double	Json.cpp	/^Value::operator double() const$/;"	f	class:Value
+operator float	Json.cpp	/^Value::operator float() const             $/;"	f	class:Value
+operator int	Json.cpp	/^Value::operator int() const$/;"	f	class:Value
+operator std::string	Json.cpp	/^Value::operator std::string() const     $/;"	f	class:Value
+push_back	Json.cpp	/^void Array::push_back(const Value& v)$/;"	f	class:Array
+size	Json.cpp	/^size_t Array::size() const$/;"	f	class:Array
+size	Json.cpp	/^size_t Value::size() const$/;"	f	class:Value
+size	Json.hpp	/^            size_t size() const {return mValues.size();}$/;"	f	class:json::Object
+snprintf	Json.cpp	19;"	d	file:

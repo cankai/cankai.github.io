@@ -1,0 +1,21 @@
+#!/bin/sh
+#ulimit -n 4096
+ulimit -c unlimited
+
+FILEPATH=$(cd `dirname $0`; pwd)
+cd ${FILEPATH}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/:/usr/lib/
+SERVERD="/account_service"
+num=`ps ax|grep $SERVERD$ | grep -v supervise |grep -v grep|wc -l`
+if [ $num -gt 0 ]
+then
+        echo "server already running ... "
+        echo 
+	exit 0
+fi
+
+/usr/local/bin/spawn-fcgi -a 0.0.0.0 -F 1 -p 8083 -f ./account_service
+#./spawn-fcgi -a 0.0.0.0 -F 5 -p 8083 -f ./account_service
+
+
+

@@ -1,0 +1,26 @@
+#ifndef _ACCOUNT_REG_H_
+#define _ACCOUNT_REG_H_
+
+#include "common/Logger.h"
+#include <stdint.h>
+#include <common/Json.hpp>
+#include "fastcgi/fcgiapp.h"
+#include "HTTPRequest.h"
+
+class AccountReg:public HTTPRequest
+{
+public:
+    AccountReg(const std::string  &cmd_type);
+    virtual ~AccountReg();
+    virtual void doAssembleParam();
+
+    virtual int handle(json::Value& jsPara);
+
+private:
+
+    //rt
+    std::string  res;//accept/refuse/review
+    std::string  devf;//设备指纹
+    DECL_LOGGER(logger);
+};
+#endif //_ACCOUNT_REG_H_

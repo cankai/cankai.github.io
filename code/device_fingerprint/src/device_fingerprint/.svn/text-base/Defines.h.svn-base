@@ -1,0 +1,44 @@
+#ifndef _DEFINES_H_
+#define _DEFINES_H_
+
+// HTML
+#define HTTP_HTML_HEADER "Content-type: text/html; charset=utf-8\r\n\r\n"
+// JSON
+#define JSON_HTTP_HTML_HEADER "Content-type: application/json; charset=utf-8\r\n\r\n"
+
+#define HTTP_STATUS_SUCC		200
+#define HTTP_STATUS_INALID		404
+#define HTTP_STATUS_PROTOCAL_ERROR	416
+#define HTTP_STATUS_SVR_SIE		500
+
+#define HTTP_200_REASON_PHRASE	"OK"
+#define HTTP_404_REASON_PHRASE	"Not Found"
+#define HTTP_416_REASON_PHRASE	"Protocal Error"
+#define HTTP_500_REASON_PHRASE	"Internal Server Error"
+
+#define ACCOUNT_REG			"/account/reg"
+#define ACCOUNT_REG_FEEDBACK		"/account/reg_feedback"
+#define ACCOUNT_REG_VALID_FB		"/account/reg_valid_fb"
+#define ACCOUNT_LOGIN			"/account/login"
+#define ACCOUNT_LOGIN_FB		"/account/login_fb"
+#define ACCOUNT_LOGIN_VALID_FB		"/account/login_valid_fb"
+#define ACCOUNT_CARD_BIND		"/account/card_bind"
+#define ACCOUNT_CARD_BIND_FB		"/account/card_bind_fb"
+#define ACCOUNT_CARD_BIND_VALID_FB	"/account/card_bind_valid_fb"
+#define ACCOUNT_CARD_UNBIND		"/account/card_unbind"
+#define ACCOUNT_CARD_UNBIND_FB		"/account/card_unbind_fb"
+#define ACCOUNT_CARD_UNBIND_VALID_FB	"/account/card_unbind_valid_fb"
+#define ACCOUNT_PAY			"/account/pay"
+#define ACCOUNT_PAY_FB			"/account/pay_fb"
+#define ACCOUNT_PAY_VALID_FB		"/account/pay_valid_fb"
+#define ACCOUNT_ACCEPT			"accept"
+#define ACCOUNT_REFUSE			"refuse"
+#define ACCOUNT_REVIEW			"review"
+
+#define PARAM_TYPE_STRING		"Ss"
+#define PARAM_TYPE_INT			"i"
+#define PARAM_TYPE_DOUBLE		"d"
+#define PARAM_TYPE_ARRAY		"a"
+
+
+#endif

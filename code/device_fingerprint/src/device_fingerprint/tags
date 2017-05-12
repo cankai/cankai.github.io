@@ -1,0 +1,160 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACCOUNT_ACCEPT	Defines.h	28;"	d
+ACCOUNT_REFUSE	Defines.h	29;"	d
+ACCOUNT_REVIEW	Defines.h	30;"	d
+APPSERVER_H	AppServer.h	2;"	d
+AddExecuteSql	RecordCache.cpp	/^int RecordCache::AddExecuteSql(const std::string& sql, int times)$/;"	f	class:RecordCache
+AddToCache	RecordCache.cpp	/^int RecordCache::AddToCache(std::vector<std::string>& keys, std::string& key, std::string& rawData, std::string cno, std::string pno)$/;"	f	class:RecordCache
+AppServer	AppServer.cpp	/^AppServer::AppServer()$/;"	f	class:AppServer
+AppServer	AppServer.h	/^class AppServer$/;"	c
+DEV_BUSSINESS	Defines.h	26;"	d
+DEV_GET_EVENT_LIST	Defines.h	23;"	d
+DEV_GET_TIME_LIST	Defines.h	21;"	d
+DEV_INIT	Defines.h	20;"	d
+DEV_LATER_EVENT	Defines.h	25;"	d
+DEV_TIMER	Defines.h	22;"	d
+DEV_UP_EVENT	Defines.h	24;"	d
+DEV_UP_LIST	Defines.h	19;"	d
+DevUpList	DevUpList.h	/^class DevUpList:public HttpRequest$/;"	c
+GetInstance	RecordCache.cpp	/^RecordCache * RecordCache::GetInstance()$/;"	f	class:RecordCache
+HTTPRequest	HTTPRequest.cpp	/^HTTPRequest::HTTPRequest(const std::string &cmd_type)$/;"	f	class:HTTPRequest
+HTTPRequest	HTTPRequest.h	/^    HTTPRequest(){}$/;"	f	class:HTTPRequest
+HTTPRequest	HTTPRequest.h	/^class HTTPRequest$/;"	c
+HTTPRequestHandler	HTTPRequestHandler.cpp	/^HTTPRequestHandler::HTTPRequestHandler()$/;"	f	class:HTTPRequestHandler
+HTTPRequestHandler	HTTPRequestHandler.h	/^class HTTPRequestHandler {$/;"	c
+HTTPRequestPool	HTTPRequestPool.cpp	/^HTTPRequestPool::HTTPRequestPool (const HTTPRequestPool & http_pool)$/;"	f	class:HTTPRequestPool
+HTTPRequestPool	HTTPRequestPool.cpp	/^HTTPRequestPool::HTTPRequestPool (unsigned poolsize)$/;"	f	class:HTTPRequestPool
+HTTPRequestPool	HTTPRequestPool.h	/^    HTTPRequestPool() {$/;"	f	class:HTTPRequestPool
+HTTPRequestPool	HTTPRequestPool.h	/^class HTTPRequestPool {$/;"	c
+HTTP_200_REASON_PHRASE	Defines.h	14;"	d
+HTTP_404_REASON_PHRASE	Defines.h	15;"	d
+HTTP_416_REASON_PHRASE	Defines.h	16;"	d
+HTTP_500_REASON_PHRASE	Defines.h	17;"	d
+HTTP_HTML_HEADER	Defines.h	5;"	d
+HTTP_STATUS_INALID	Defines.h	10;"	d
+HTTP_STATUS_PROTOCAL_ERROR	Defines.h	11;"	d
+HTTP_STATUS_SUCC	Defines.h	9;"	d
+HTTP_STATUS_SVR_SIE	Defines.h	12;"	d
+JSON_HTTP_HTML_HEADER	Defines.h	7;"	d
+LoadDB	RecordCache.cpp	/^void  RecordCache::LoadDB()$/;"	f	class:RecordCache
+PARAM_TYPE_ARRAY	Defines.h	35;"	d
+PARAM_TYPE_DOUBLE	Defines.h	34;"	d
+PARAM_TYPE_INT	Defines.h	33;"	d
+PARAM_TYPE_STRING	Defines.h	32;"	d
+Pool	Queue.h	/^    Pool(int capacity)$/;"	f	class:Pool
+Pool	Queue.h	/^class Pool{$/;"	c
+RECORD_CACHE__H	RecordCache.h	2;"	d
+RecordCache	RecordCache.cpp	/^RecordCache::RecordCache()$/;"	f	class:RecordCache
+RecordCache	RecordCache.h	/^class RecordCache : public Thread{$/;"	c
+ResetDeviceRedis	RecordCache.cpp	/^void  RecordCache::ResetDeviceRedis()$/;"	f	class:RecordCache
+ResetRedis	RecordCache.cpp	/^void  RecordCache::ResetRedis()$/;"	f	class:RecordCache
+SaveToDB	RecordCache.cpp	/^bool RecordCache::SaveToDB(const std::string& sql_buf)$/;"	f	class:RecordCache
+_DEFINES_H_	Defines.h	2;"	d
+_DEVUPLIST_H	DevUpList.h	9;"	d
+_HTTPREQUESTPOOL_H	HTTPRequestPool.h	2;"	d
+_HTTP_REQUEST_HANDLER_	HTTPRequestHandler.h	2;"	d
+_HTTP_REQUEST_H_	HTTPRequest.h	2;"	d
+_QUEUE_H	Queue.h	2;"	d
+_db_lock	RecordCache.h	/^        Lock _db_lock;$/;"	m	class:RecordCache
+_db_table_name	RecordCache.h	/^        std::string  _db_table_name;$/;"	m	class:RecordCache
+_instance	RecordCache.cpp	/^RecordCache * RecordCache::_instance = NULL;$/;"	m	class:RecordCache	file:
+_instance	RecordCache.h	/^        static RecordCache * _instance;$/;"	m	class:RecordCache
+_instance_lock	RecordCache.cpp	/^Lock RecordCache::_instance_lock ;$/;"	m	class:RecordCache	file:
+_instance_lock	RecordCache.h	/^        static Lock _instance_lock;$/;"	m	class:RecordCache
+account_card_bind	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_card_bind;$/;"	m	class:HTTPRequestPool
+account_card_bind_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_card_bind_fb;$/;"	m	class:HTTPRequestPool
+account_card_unbind	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_card_unbind;$/;"	m	class:HTTPRequestPool
+account_card_unbind_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_card_unbind_fb;$/;"	m	class:HTTPRequestPool
+account_login	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_login;$/;"	m	class:HTTPRequestPool
+account_login_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_login_fb;$/;"	m	class:HTTPRequestPool
+account_login_valid_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_login_valid_fb;$/;"	m	class:HTTPRequestPool
+account_pay	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_pay;$/;"	m	class:HTTPRequestPool
+account_pay_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_pay_fb;$/;"	m	class:HTTPRequestPool
+account_reg	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_reg;$/;"	m	class:HTTPRequestPool
+account_reg_feedback	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_reg_feedback;$/;"	m	class:HTTPRequestPool
+account_reg_valid_fb	HTTPRequestPool.h	/^    std::vector<pair<HTTPRequest*,bool> >account_reg_valid_fb;$/;"	m	class:HTTPRequestPool
+account_service_db_pool	RecordCache.h	/^        PGDBConnectionPool account_service_db_pool;$/;"	m	class:RecordCache
+account_service_redis_pool	RecordCache.h	/^        RedisConnectionPool *account_service_redis_pool;$/;"	m	class:RecordCache
+aid	HTTPRequest.h	/^    std::string aid;\/\/应用标识$/;"	m	class:HTTPRequest
+allocBuffer	Queue.h	/^    virtual T* allocBuffer(int capacity)$/;"	f	class:Pool
+cacheHasKey	RecordCache.cpp	/^bool RecordCache::cacheHasKey(const string& key, string &value)$/;"	f	class:RecordCache
+checkBuffer	Queue.h	/^    bool checkBuffer()$/;"	f	class:Pool
+clear_status	HTTPRequest.cpp	/^void HTTPRequest::clear_status()$/;"	f	class:HTTPRequest
+code	DevUpList.h	/^        int code;$/;"	m	class:DevUpList
+create	HTTPRequestHandler.cpp	/^HTTPRequest* HTTPRequestHandler::create(FCGX_Request* request)$/;"	f	class:HTTPRequestHandler
+delKey	RecordCache.cpp	/^bool RecordCache::delKey(const string& key)$/;"	f	class:RecordCache
+deviceInfoChange	RecordCache.cpp	/^bool RecordCache::deviceInfoChange(json::Value jsCache, json::Value jsIn)$/;"	f	class:RecordCache
+device_fingerprint_info	RecordCache.h	/^        std::map<std::string, std::string>  *device_fingerprint_info;$/;"	m	class:RecordCache
+device_fingerprint_info_buffer	RecordCache.h	/^        std::map<std::string, std::string>  *device_fingerprint_info_buffer;$/;"	m	class:RecordCache
+device_fingerprint_info_latest	RecordCache.h	/^        std::map<std::string, std::string>  *device_fingerprint_info_latest;$/;"	m	class:RecordCache
+device_fingerprint_info_update	RecordCache.h	/^        std::map<std::string, std::string>  *device_fingerprint_info_update;$/;"	m	class:RecordCache
+doAssembleParam	HTTPRequest.cpp	/^void HTTPRequest::doAssembleParam()$/;"	f	class:HTTPRequest
+doAssembleSql	HTTPRequest.cpp	/^int HTTPRequest::doAssembleSql()$/;"	f	class:HTTPRequest
+doit	AppServer.cpp	/^void* AppServer::doit(void* para)$/;"	f	class:AppServer
+eid	HTTPRequest.h	/^    std::string eid;\/\/消息id$/;"	m	class:HTTPRequest
+execute_sql	RecordCache.h	/^        std::vector<std::pair<std::string, int> > *execute_sql;$/;"	m	class:RecordCache
+freeBuffer	Queue.h	/^    virtual void freeBuffer(T* pBuffer)$/;"	f	class:Pool
+getCapacity	Queue.h	/^    int getCapacity()$/;"	f	class:Pool
+getDeviceFingerprint	RecordCache.cpp	/^std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string cno, std::string pno)$/;"	f	class:RecordCache
+getFree	Queue.h	/^    int getFree()$/;"	f	class:Pool
+getUsed	Queue.h	/^    int getUsed()$/;"	f	class:Pool
+getValue	RecordCache.cpp	/^bool RecordCache::getValue(const string& key, string& value)$/;"	f	class:RecordCache
+get_http_request	HTTPRequestPool.cpp	/^HTTPRequest *HTTPRequestPool::get_http_request (std::string cmd_type,bool autocreate)$/;"	f	class:HTTPRequestPool
+get_request_cmd	HTTPRequestHandler.cpp	/^std::string HTTPRequestHandler::get_request_cmd(FCGX_Request* request)$/;"	f	class:HTTPRequestHandler
+handle	HTTPRequest.cpp	/^int HTTPRequest::handle(FCGX_Request* request)$/;"	f	class:HTTPRequest
+handle	HTTPRequest.cpp	/^int HTTPRequest::handle(json::Value& jsPara) {$/;"	f	class:HTTPRequest
+hasKey	RecordCache.cpp	/^bool RecordCache::hasKey(const string& key, string &value)$/;"	f	class:RecordCache
+http_pool_lock	HTTPRequestPool.h	/^    pthread_mutex_t http_pool_lock;$/;"	m	class:HTTPRequestPool
+http_request_pool	HTTPRequestHandler.h	/^    HTTPRequestPool http_request_pool;$/;"	m	class:HTTPRequestHandler
+jsReturn	HTTPRequest.h	/^    json::Value jsReturn;$/;"	m	class:HTTPRequest
+m_buffer	Queue.h	/^    T*  m_buffer;$/;"	m	class:Pool
+m_capacity	Queue.h	/^    int m_capacity;$/;"	m	class:Pool
+m_cmd_type	HTTPRequest.h	/^    std::string m_cmd_type;$/;"	m	class:HTTPRequest
+m_cond_not_empty	Queue.h	/^    pthread_cond_t    m_cond_not_empty;$/;"	m	class:Pool
+m_cond_not_full	Queue.h	/^    pthread_cond_t    m_cond_not_full;$/;"	m	class:Pool
+m_free	Queue.h	/^    int m_free;$/;"	m	class:Pool
+m_lock	Queue.h	/^    pthread_mutex_t m_lock;$/;"	m	class:Pool
+m_params	HTTPRequest.h	/^    std::map<std::string, std::pair<std::string, bool> > m_params;$/;"	m	class:HTTPRequest
+m_request_handler	AppServer.h	/^        HTTPRequestHandler* m_request_handler;$/;"	m	class:AppServer
+m_used	Queue.h	/^    int m_used;$/;"	m	class:Pool
+main	Main.cpp	/^int main(void)$/;"	f
+paraMatch	HTTPRequest.cpp	/^bool HTTPRequest::paraMatch(json::Value& jsPara)$/;"	f	class:HTTPRequest
+pgHasKey	RecordCache.cpp	/^bool RecordCache::pgHasKey(const string& key, string &value)$/;"	f	class:RecordCache
+pools_size	RecordCache.h	/^        int pools_size;$/;"	m	class:RecordCache
+pr	HTTPRequest.h	/^    int pr;\/\/协议版本$/;"	m	class:HTTPRequest
+process	AppServer.cpp	/^void* AppServer::process(void* para)$/;"	f	class:AppServer
+process	HTTPRequestHandler.cpp	/^int HTTPRequestHandler::process(FCGX_Request* request)$/;"	f	class:HTTPRequestHandler
+processRequest	AppServer.cpp	/^int AppServer::processRequest(FCGX_Request* request)$/;"	f	class:AppServer
+recordSize	RecordCache.cpp	/^int RecordCache::recordSize()$/;"	f	class:RecordCache
+redisHasKey	RecordCache.cpp	/^bool RecordCache::redisHasKey(const string& key, string &value)$/;"	f	class:RecordCache
+release_http_request	HTTPRequestPool.cpp	/^void HTTPRequestPool::release_http_request(HTTPRequest * http_request)$/;"	f	class:HTTPRequestPool
+release_request_pool	HTTPRequestPool.cpp	/^void HTTPRequestPool::release_request_pool(std::vector<pair<HTTPRequest*,bool> >*http_request_pool)$/;"	f	class:HTTPRequestPool
+render	HTTPRequestHandler.cpp	/^int HTTPRequestHandler::render(FCGX_Request* request, HTTPRequest* http_req)$/;"	f	class:HTTPRequestHandler
+res	DevUpList.h	/^        string res;$/;"	m	class:DevUpList
+run	AppServer.cpp	/^void AppServer::run(int thread_count)$/;"	f	class:AppServer
+run	RecordCache.cpp	/^void RecordCache::run()$/;"	f	class:RecordCache
+setValue	RecordCache.cpp	/^bool RecordCache::setValue(const std::string &key, const std::string &value)$/;"	f	class:RecordCache
+set_size	HTTPRequestHandler.cpp	/^void HTTPRequestHandler::set_size(int size)$/;"	f	class:HTTPRequestHandler
+set_size	HTTPRequestPool.cpp	/^void HTTPRequestPool::set_size (uint32_t poolsize)$/;"	f	class:HTTPRequestPool
+sign_t	AppServer.cpp	/^void AppServer::sign_t(int sign)$/;"	f	class:AppServer
+skv	HTTPRequest.h	/^    std::string skv;\/\/提示描述信息$/;"	m	class:HTTPRequest
+status	HTTPRequest.h	/^    int status;\/\/200 or 500 表示服务状态$/;"	m	class:HTTPRequest
+store_sql	HTTPRequest.h	/^    std::string store_sql;$/;"	m	class:HTTPRequest
+syncDB	RecordCache.cpp	/^void *RecordCache::syncDB(void* data)$/;"	f	class:RecordCache
+tasks	AppServer.h	/^        Queue<FCGX_Request*> *tasks;$/;"	m	class:AppServer
+tb_name	HTTPRequest.h	/^    std::string tb_name;$/;"	m	class:HTTPRequest
+tid	HTTPRequest.h	/^    std::string tid;\/\/应用启动时生产，退出时结束$/;"	m	class:HTTPRequest
+urlParam	HTTPRequest.h	/^    std::map<std::string, std::string> urlParam;\/\/request params map$/;"	m	class:HTTPRequest
+work	AppServer.cpp	/^void AppServer::work(int thread_count)$/;"	f	class:AppServer
+wrapperJsReturn	HTTPRequest.h	/^    json::Value wrapperJsReturn;$/;"	m	class:HTTPRequest
+~AppServer	AppServer.cpp	/^AppServer::~AppServer()$/;"	f	class:AppServer
+~HTTPRequest	HTTPRequest.cpp	/^HTTPRequest::~HTTPRequest()$/;"	f	class:HTTPRequest
+~HTTPRequestHandler	HTTPRequestHandler.cpp	/^HTTPRequestHandler::~HTTPRequestHandler()$/;"	f	class:HTTPRequestHandler
+~HTTPRequestPool	HTTPRequestPool.cpp	/^HTTPRequestPool::~HTTPRequestPool ()$/;"	f	class:HTTPRequestPool
+~Pool	Queue.h	/^    virtual ~Pool()$/;"	f	class:Pool
+~RecordCache	RecordCache.cpp	/^RecordCache::~RecordCache()$/;"	f	class:RecordCache

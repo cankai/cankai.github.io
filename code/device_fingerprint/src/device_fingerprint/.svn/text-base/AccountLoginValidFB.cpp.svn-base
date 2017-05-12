@@ -1,0 +1,38 @@
+#include "AccountLoginValidFB.h"
+
+IMPL_LOGGER(AccountLoginValidFB, logger);
+
+AccountLoginValidFB::AccountLoginValidFB(const std::string  &cmd_type):
+        HTTPRequest(cmd_type) {
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+    std::map<std::string, std::pair<std::string, bool> > ext_params = {
+            { "suc", std::make_pair(PARAM_TYPE_STRING, true) }, //true/false
+            { "msg", std::make_pair(PARAM_TYPE_STRING, false) }, //文字描述, 用于描述注册失原因描述
+            { "cno", std::make_pair(PARAM_TYPE_STRING, true) }, //客户 id, 没有就不传
+            { "cname", std::make_pair(PARAM_TYPE_STRING, true) }, //用户登录名
+    };
+
+    m_params.insert(ext_params.begin(), ext_params.end());
+
+    tb_name = g_config_reader->get_string("account_service.db.tablename.account.loginvalidfb", "tb_account_login_valid_fb");
+}
+
+AccountLoginValidFB::~AccountLoginValidFB()
+{
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << "destruction function" << ")");
+}
+
+int AccountLoginValidFB::handle(json::Value& jsPara) {
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+    if(HTTPRequest::handle(jsPara) == 0)
+    {   
+        return doAssembleSql();
+    }   
+    return -1; 
+}
+
+void AccountLoginValidFB::doAssembleParam()
+{
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+    HTTPRequest::doAssembleParam();
+}

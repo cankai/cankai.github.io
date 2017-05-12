@@ -1,0 +1,206 @@
+CREATE TABLE tb_account_reg (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+cdata json,
+aid varchar(128) NOT NULL default '',
+hip varchar(128) default '',
+hvia varchar(128) default '',
+hfwd varchar(128) default '',
+cname varchar(128) NOT NULL default '',
+cpwd varchar(128) default '',
+cno varchar(128) default '',
+pno varchar(128) default '',
+otp_time int default -1,
+cap_time int default -1,
+otp_times int default -1,
+cap_times int default -1,
+carno varchar(128) default '',
+referrer varchar(128) default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_reg_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+cname varchar(128) NOT NULL default '',
+msg varchar(256) default '',
+cno varchar(128) default '',
+pno varchar(128) default '',
+authn varchar(128) default '',
+autht varchar(128) default '',
+fname varchar(128) default '',
+sex smallint default 2,
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_reg_valid_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+msg varchar(256) NOT NULL default '',
+cno varchar(128) default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_login (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+cdata json,
+aid varchar(128) NOT NULL default '',
+cname varchar(128) NOT NULL default '',
+cpwd varchar(128) default '',
+cno varchar(128) default '',
+pno varchar(128) default '',
+hip varchar(128) default '',
+hvia varchar(128) default '',
+hfwd varchar(128) default '',
+otp_time int default -1,
+cap_time int default -1,
+otp_times int default -1,
+cap_times int default -1,
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_login_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+cname varchar(128) NOT NULL default '',
+cno varchar(128) default '',
+msg varchar(256)  default '',
+authn varchar(128) default '',
+autht varchar(128) default '',
+fname varchar(128) default '',
+sex smallint default 2,
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_login_valid_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+msg varchar(256) default '',
+cno varchar(128) NOT NULL default '',
+cname varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+
+CREATE TABLE tb_account_card_bind (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+cno varchar(128) NOT NULL default '',
+fname varchar(128) NOT NULL default '',
+autht varchar(128) NOT NULL default '',
+authn varchar(128) NOT NULL default '',
+pno varchar(128) NOT NULL default '',
+carno varchar(128) NOT NULL default '',
+cararr varchar(128) NOT NULL default '',
+aid varchar(128) NOT NULL default '',
+btimes varchar(128) default '',
+hip varchar(128) default '',
+hvia varchar(128) default '',
+hfwd varchar(128) default '',
+gprs_city varchar(128) default '',
+devf varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+
+CREATE TABLE tb_account_card_bind_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+msg varchar(256) NOT NULL default '',
+cno varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_card_unbind (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+cno varchar(128) NOT NULL default '',
+autht varchar(128) NOT NULL default '',
+authn varchar(128) NOT NULL default '',
+carno varchar(128) NOT NULL default '',
+aid varchar(128) NOT NULL default '',
+btimes varchar(128) default '',
+hip varchar(128) default '',
+hvia varchar(128) default '',
+hfwd varchar(128) default '',
+gprs_city varchar(128) default '',
+devf varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+
+
+CREATE TABLE tb_account_card_unbind_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+msg varchar(256) NOT NULL default '',
+carno varchar(128) NOT NULL default '',
+cno varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+
+CREATE TABLE tb_account_pay (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+cdata json,
+cno varchar(128) NOT NULL default '',
+scarno varchar(128) NOT NULL default '',
+sbank varchar(128) NOT NULL default '',
+sname varchar(128) NOT NULL default '',
+dcarno varchar(128) NOT NULL default '',
+dbank varchar(128) NOT NULL default '',
+dname varchar(128) NOT NULL default '',
+amount double precision NOT NULL default 0.0,
+remain double precision NOT NULL default 0.0,
+aid varchar(128) NOT NULL default '',
+commit_time timestamp  NOT NULL,
+currency smallint default 1,
+hip varchar(128) default '',
+hvia varchar(128) default '',
+hfwd varchar(128) default '',
+abstract varchar(256) NOT NULL default '',
+msg varchar(256) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));
+
+CREATE TABLE tb_account_pay_fb (
+id SERIAL,
+proc int NOT NULL default '0',
+eid varchar(128) NOT NULL default '',
+tid varchar(128) NOT NULL default '',
+suc varchar(16) NOT NULL default 'false',
+msg varchar(256) NOT NULL default '',
+carno varchar(128) NOT NULL default '',
+cno varchar(128) NOT NULL default '',
+createtime timestamp  NOT NULL,
+PRIMARY KEY  (id));

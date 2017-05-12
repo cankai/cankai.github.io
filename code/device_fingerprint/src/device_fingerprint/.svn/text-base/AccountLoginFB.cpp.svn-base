@@ -1,0 +1,42 @@
+#include "AccountLoginFB.h"
+
+IMPL_LOGGER(AccountLoginFB, logger);
+
+AccountLoginFB::AccountLoginFB(const std::string  &cmd_type):
+        HTTPRequest(cmd_type) {
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+    std::map<std::string, std::pair<std::string, bool> > ext_params = {
+            { "suc", std::make_pair(PARAM_TYPE_STRING, true) }, //true/false
+            { "cname", std::make_pair(PARAM_TYPE_STRING, true) }, //用户登录名
+            { "cno", std::make_pair(PARAM_TYPE_STRING, false) }, //客户 id, 没有就不传
+            { "msg", std::make_pair(PARAM_TYPE_STRING, false) }, //文字描述, 用于描述注册失原因描述
+            { "authn", std::make_pair(PARAM_TYPE_STRING, false) }, //证件号码(md5)
+            { "autht", std::make_pair(PARAM_TYPE_STRING, false) }, //证件类型
+            { "fname", std::make_pair(PARAM_TYPE_STRING, false) }, //姓名
+            { "sex", std::make_pair(PARAM_TYPE_INT, false) }, //0:女,1:男,2:未知
+    };
+
+    m_params.insert(ext_params.begin(), ext_params.end());
+
+    tb_name = g_config_reader->get_string("account_service.db.tablename.account.loginfb", "tb_account_login_fb");
+}
+
+AccountLoginFB::~AccountLoginFB()
+{
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << "destruction function" << ")");
+}
+
+
+int AccountLoginFB::handle(json::Value& jsPara) {
+    if(HTTPRequest::handle(jsPara) == 0)
+    {   
+        return doAssembleSql();
+    }   
+    return -1; 
+}
+
+void AccountLoginFB::doAssembleParam()
+{
+    HTTPRequest::doAssembleParam();
+}
+

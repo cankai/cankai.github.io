@@ -1,0 +1,95 @@
+#include "AccountLogin.h"
+#include "common/CryptTask.hpp"
+#include "RecordCache.h"
+
+IMPL_LOGGER(AccountLogin, logger);
+
+AccountLogin::AccountLogin(const std::string  &cmd_type):
+        HTTPRequest(cmd_type) {
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+    std::map<std::string, std::pair<std::string, bool> > ext_params = {
+            { "cdata", std::make_pair(PARAM_TYPE_STRING, false) }, //客户端数据?非必须
+            { "aid", std::make_pair(PARAM_TYPE_STRING, true) }, //应用 id
+            { "cname", std::make_pair(PARAM_TYPE_STRING, true) }, //用户登录名
+            { "cpwd", std::make_pair(PARAM_TYPE_STRING, false) }, //用户加密后密码hashcode
+            { "cno", std::make_pair(PARAM_TYPE_STRING, false) }, //业务帐号
+            { "pno", std::make_pair(PARAM_TYPE_STRING, false) }, //手机号码
+            { "hip", std::make_pair(PARAM_TYPE_STRING, false) }, //客户端ip
+            { "hvia", std::make_pair(PARAM_TYPE_STRING, false) }, //Http 头中的HTTP_VIA 参数
+            { "hfwd", std::make_pair(PARAM_TYPE_STRING, false) }, //Http头中的HTTP_X_FORWARDED_FOR 参数
+            { "otp_time", std::make_pair(PARAM_TYPE_INT, false) }, //本次登录的最后一次短信验证码完成时间, 单位 ms, 没有就填-1
+            { "cap_time", std::make_pair(PARAM_TYPE_INT, false) }, //本次登录的最后一次图形验证码完成时间, 单位 ms, 没有就填-1
+            { "otp_times", std::make_pair(PARAM_TYPE_INT, false) }, //本次会话重复验证次数, 没有就填-1
+            { "cap_times", std::make_pair(PARAM_TYPE_INT, false) }, //本次会话重复验证次数, 没有就填-1
+            { "cver", std::make_pair(PARAM_TYPE_STRING, false) }, //客户端版本号，口袋直接使用nativeversion的值
+            { "from", std::make_pair(PARAM_TYPE_STRING, false) }, //注册来源，1，undef未定义，2业务标识
+            //{ "channel", std::make_pair(PARAM_TYPE_STRING, true) }, //渠道
+            //{ "appv", std::make_pair(PARAM_TYPE_STRING, true) }, //应用版本号
+    };
+
+    m_params.insert(ext_params.begin(), ext_params.end());
+
+    tb_name = g_config_reader->get_string("account_service.db.tablename.account.login", "tb_account_login");
+}
+
+AccountLogin::~AccountLogin()
+{
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << "destruction function" << ")");
+}
+
+int AccountLogin::handle(json::Value& jsPara) {
+    if(HTTPRequest::handle(jsPara) == 0)
+    {   
+        if(jsPara.HasKey("cdata")){
+            std::string  cDataCrypt = jsPara.ToObject()["cdata"].ToString();
+            std::string  cDataDecrypt;
+            if(!CryptTask::Crypt(cDataCrypt, cDataDecrypt))
+            {
+                LOG4CPLUS_WARN(logger, "data decrypt error:" << cDataCrypt << "#end");
+                return -1;
+            }
+            else
+            {
+                std::string cno = "";
+                std::string pno = "";
+                if(jsPara.HasKey("cno")){
+                    cno = jsPara.ToObject()["cno"].ToString();
+                }
+                if(jsPara.HasKey("pno")){
+                    pno = jsPara.ToObject()["pno"].ToString();
+                }
+                devf = RecordCache::GetInstance()->getDeviceFingerprint(cDataDecrypt, cno, pno);
+                if(devf.length() > 1)
+                {
+                    urlParam["cdata"] = cDataDecrypt;
+                    res = ACCOUNT_ACCEPT;
+                    return doAssembleSql();
+                }
+            }
+        }
+        else
+        {
+#if 0
+            ::dsn::tmx::analyse_req req;
+            req._tid = "tid1024";
+            req._eid = "eid1024";
+            req._app = "app1024";
+            req._etype = "login";
+            req._pload = "{\"hip\":\"180.112.119.125\"}";
+            DC::GetInstance()->addReq(req);
+#endif
+
+            res = ACCOUNT_ACCEPT;
+            return doAssembleSql();
+        }
+    }   
+    return -1; 
+}
+
+void AccountLogin::doAssembleParam()
+{
+    HTTPRequest::doAssembleParam();
+    jsReturn["res"] = res;
+    jsReturn["devf"] = devf;
+}
+

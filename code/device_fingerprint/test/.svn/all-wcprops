@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunck/!svn/ver/6/account_service/test
+END
+private.key
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/trunck/!svn/ver/6/account_service/test/private.key
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/trunck/!svn/ver/6/account_service/test/test.py
+END
+test.sh
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/trunck/!svn/ver/6/account_service/test/test.sh
+END
+test.sql
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/trunck/!svn/ver/6/account_service/test/test.sql
+END

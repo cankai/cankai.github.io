@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi
+END
+fcgi_lib.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/trunck/!svn/ver/22/account_service/src/fastcgi/fcgi_lib.cpp
+END
+html_lib.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/html_lib.h
+END
+fcgi_config.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgi_config.h
+END
+fcgi_lib.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgi_lib.h
+END
+fcgi_config_x86.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgi_config_x86.h
+END
+fcgiapp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgiapp.cpp
+END
+fcgi_stdio.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgi_stdio.cpp
+END
+fcgiapp.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgiapp.h
+END
+fcgi_stdio.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgi_stdio.h
+END
+fcgios.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgios.h
+END
+os_unix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/os_unix.cpp
+END
+fastcgi.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fastcgi.h
+END
+fcgimisc.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgimisc.h
+END
+html_lib.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/html_lib.cpp
+END
+fcgio.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/trunck/!svn/ver/6/account_service/src/fastcgi/fcgio.h
+END

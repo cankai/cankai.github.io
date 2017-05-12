@@ -1,0 +1,25 @@
+#ifndef _ACCOUNT_REG_FEEDBACK_H_
+#define _ACCOUNT_REG_FEEDBACK_H_
+
+#include "common/Logger.h"
+#include <stdint.h>
+#include <common/Json.hpp>
+#include "fastcgi/fcgiapp.h"
+#include "HTTPRequest.h"
+
+class AccountRegFeedback:public HTTPRequest
+{
+public:
+    AccountRegFeedback(const std::string  &cmd_type);
+    virtual ~AccountRegFeedback();
+    virtual void doAssembleParam();
+
+
+    virtual int handle(json::Value& jsPara);
+
+private:
+
+    //rt
+    DECL_LOGGER(logger);
+};
+#endif //_ACCOUNT_REG_FEEDBACK_H_

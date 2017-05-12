@@ -1,0 +1,22 @@
+#ifndef _ACCOUNT_PAY_FB_H_
+#define _ACCOUNT_PAY_FB_H_
+
+#include "common/Logger.h"
+#include <stdint.h>
+#include <common/Json.hpp>
+#include "fastcgi/fcgiapp.h"
+#include "HTTPRequest.h"
+
+class AccountPayFB:public HTTPRequest
+{
+public:
+    AccountPayFB(const std::string  &cmd_type);
+    virtual ~AccountPayFB();
+    virtual void doAssembleParam();
+
+    virtual int handle(json::Value& jsPara);
+
+private:
+    DECL_LOGGER(logger);
+};
+#endif //_ACCOUNT_PAY_FB_H_

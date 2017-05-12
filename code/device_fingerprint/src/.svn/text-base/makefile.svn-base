@@ -1,0 +1,58 @@
+OBJDIR=../bin/
+PREFIX=/usr/local
+INSTALL_INCLUDE_PATH= $(PREFIX)/include/hiredis-vip
+INSTALL_LIBRARY_PATH= $(PREFIX)/lib
+
+#CC=g++
+INCLUDE=-I./ -I/usr/local/pgsql/include -I/usr/include/mysql -I$(INSTALL_INCLUDE_PATH) -I../../common/log4cplus-1.2.0/include -I./include -include inttypes.h -include string.h -include stdlib.h -include stdio.h
+LOG=-DLOGGER #-DMEM_DEBUG -D_MEM_DEBUG
+EPOLL=-D_EPOLL_
+
+SO_CFLAGS:=-Wall -shared -fPIC -O0 -g $(INCLUDE) $(LOG) -D_DEBUG -D__STDC_FORMAT_MACROS
+CFLAGS:=-std=c++0x -Wall -Wno-deprecated  -g $(INCLUDE) $(LOG) -D_DEBUG -D_FILE_OFFSET_BITS=64 -DTIXML_USE_STL -D__STDC_FORMAT_MACROS  -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free 
+
+CPPFLAGS:=$(CFLAGS)
+LIB=-L../lib -L$(INSTALL_LIBRARY_PATH)/lib  -lstdc++ -lcrypto -lrt -lpthread -lpq /home/chenkai/compile/hiredis-vip-master/libhiredis_vip.a  /usr/local/lib/libjemalloc.a -ljsoncpp  -lz  -lcurl -llog4cplus -lhiredis_vip -ljemalloc
+
+#Json
+JSONCPPDIR=./json/
+JSONCPPSRC:=$(wildcard $(JSONCPPDIR)*.cpp)
+JSONCPPOBJ:=$(patsubst %.cpp,%.o,$(JSONCPPSRC))
+JSONCPPDEP:=$(patsubst %.cpp,%.d,$(JSONCPPSRC))
+
+#fastcgi
+FASTCGICPPDIR=./fastcgi/
+FASTCGICPPSRC:=$(wildcard $(FASTCGICPPDIR)*.cpp)
+FASTCGICPPOBJ:=$(patsubst %.cpp,%.o,$(FASTCGICPPSRC))
+FASTCGICPPDEP:=$(patsubst %.cpp,%.d,$(FASTCGICPPSRC))
+
+#common
+COMMONDIR=./common/
+COMMONSRC:=$(wildcard $(COMMONDIR)*.cpp)
+COMMONOBJ:=$(patsubst %.cpp,%.o,$(COMMONSRC))
+COMMONDEP:=$(patsubst %.cpp,%.d,$(COMMONSRC))
+
+CGIDEVICEDIR=./account_service/
+CGIDEVICESRC:=$(wildcard $(CGIDEVICEDIR)*.cpp)
+CGIDEVICEOBJ:=$(patsubst %.cpp,%.o,$(CGIDEVICESRC))
+CGIDEVICEDEP:=$(patsubst %.cpp,%.d,$(CGIDEVICESRC))
+
+#DCDEVICEDIR=./dc/
+#DCDEVICESRC:=$(wildcard $(DCDEVICEDIR)*.cpp)
+#DCDEVICEOBJ:=$(patsubst %.cpp,%.o,$(DCDEVICESRC))
+#DCDEVICEDEP:=$(patsubst %.cpp,%.d,$(DCDEVICESRC))
+
+
+all: $(OBJDIR)account_service
+
+deps: $(JSONCPPDEP) $(FASTCGICPPDEP) $(CGIDEVICEDEP) $(COMMONDEP) 
+
+$(OBJDIR)account_service: $(JSONCPPOBJ) $(FASTCGICPPOBJ) $(CGIDEVICEOBJ) $(COMMONOBJ) 
+	$(CC) $^ $(CFLAGS) -o $@ $(LIB)
+
+clean:
+	rm $(CGIDEVICEDIR)*.o $(FASTCGICPPDIR)*.o $(COMMONDIR)*.o
+
+-include $(CLIENTDEP)
+
+rebuild: clean all
