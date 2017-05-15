@@ -1,39 +1,37 @@
 /*************************************************************************
-	> File Name: DevUpList.cpp
-	> Brief: 初始化上报信息查询接口
-             根据上报的信息操作系统，系统版本，网络类型，返回采集列表
-	> Author: Chen Kai(chenkai878@pingan.com.cn)
-	> Created Time: Fri 12 May 2017 10:52:19 AM CST
+	> File Name: DevGevtList.cpp
+	> Brief: 事件上传列表获取,包括及时上传时间，限时上传时间
+	> Author: Chen Kai(ischenkai@qq.com)
+	> Home: http://www.chenkai.me
+	> Created Time: 一  5/15 16:32:10 2017
  ************************************************************************/
+#include "DevGevtList.h"
 
-#include "DevUpList.h"
-IMPL_LOGGER(DevUpList);
-
-DevUpList::DevUpList(const string& cmd_type):HTTPRequest(cmd_type)
+IMPL_LOGGER(DevGevlList);
+DevGevtList::DevGevtList(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
     std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"os", std::make_pair(PARAM_TYPE_STRING, true)}, //操作系统
-               {"sv", std::make_pair(PARAM_TYPE_STRING, true)}, //系统版本号
-               {"nt", std::make_pair(PARAM_TYPE_STRING, true)} //网络类型
+               {"in", std::make_pair(PARAM_TYPE_STRING, true)}, //采集数据
+               {"dev", std::make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
     };
     m_params.insert(base_params.begin(), base_params.end());
 
-    tb_name = g_config_reader->get_string("dev_up_list.table");
-}
-
-DevUpList::~DevUpList()
-{
-}
+    tb_name = g_config_reader->get_string("dev_gevt_list.table");
+ }
+ DevGevtList::~DevGevtList()
+ {
+    LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
+ }
 
 /*************************************************************************
- * Brief: 组装返回参数
+ * Brief: 组装返回json
  * Params:
  * Return:
  * Author: Chen Kai(ischenkai.com)
- * Created Time:  一  5/15 15:23:59 2017
+ * Created Time:  一  5/15 15:32:55 2017
  *************************************************************************/
-void DevUpList::doAssembleParam()
+void DevGevtList::doAssembleParam()
 {
 
     HTTPRequest::doAssembleParam();
@@ -46,7 +44,7 @@ void DevUpList::doAssembleParam()
  * Author: Chen Kai(ischenkai.com)
  * Created Time:  五  5/12 17:49:55 2017
  *************************************************************************/
-int DevUpList::handle(json::Value& jsPara)
+int DevGevtList::handle(json::Value& jsPara)
 {
     return 0;
 }

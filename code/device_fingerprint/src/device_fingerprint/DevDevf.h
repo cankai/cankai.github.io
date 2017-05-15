@@ -1,6 +1,6 @@
 /*************************************************************************
 	> File Name: DevDevf.h
-	> Brief: 
+	> Brief: 初始化接口
 	> Author: Chen Kai(chenkai878@pingan.com.cn)
 	> Created Time: Fri 12 May 2017 11:38:40 AM CST
  ************************************************************************/
@@ -15,6 +15,7 @@ class DevDevf:public HTTPRequest
 
         void doAssembleParam();
         int handle(json::Value& jsPara);
+
     private:
         string devf;
         string code;
