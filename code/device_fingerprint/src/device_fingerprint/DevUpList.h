@@ -21,5 +21,5 @@ class DevUpList:public HTTPRequest
         string res;
         int code;
         DECL_LOGGER(logger);
-}
+};
 #endif

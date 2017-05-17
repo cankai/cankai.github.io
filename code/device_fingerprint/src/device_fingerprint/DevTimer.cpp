@@ -5,14 +5,14 @@
 	> Created Time: 五  5/12 16:00:57 2017
  ************************************************************************/
 #include "DevTimer.h"
+IMPL_LOGGER(DevTimer, logger);
 
-IMPL_LOGGER(DevTimer);
 DevTimer::DevTimer(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"in", std::make_pair(PARAM_TYPE_STRING, true)}, //采集数据
-               {"dev", std::make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
+    map<string, pair<string, bool> > base_params = {
+               {"in", make_pair(PARAM_TYPE_STRING, true)}, //采集数据
+               {"dev", make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
     };
     m_params.insert(base_params.begin(), base_params.end());
 

@@ -5,15 +5,15 @@
 	> Created Time: 五  5/12 15:31:59 2017
  ************************************************************************/
 #include "DevGtmList.h"
+IMPL_LOGGER(DevGtmList, logger);
 
-IMPL_LOGGER(DevGtmList);
-DevGtmList::DevGtmList(const string& cmd_type):HttpReuest(cmd_type)
+DevGtmList::DevGtmList(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"net", std::make_pair(PARAM_TYPE_STRING, true)}, //info
-               {"os", std::make_pair(PARAM_TYPE_STRING, true)}, //android,ios linux,windows
-               {"ver", std::make_pair(PARAM_TYPE_STRING, true)}, //version
+    map<string, pair<string, bool> > base_params = {
+               {"net", make_pair(PARAM_TYPE_STRING, true)}, //info
+               {"os", make_pair(PARAM_TYPE_STRING, true)}, //android,ios linux,windows
+               {"ver", make_pair(PARAM_TYPE_STRING, true)}, //version
     };
     m_params.insert(base_params.begin(), base_params.end());
 

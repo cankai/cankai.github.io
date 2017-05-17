@@ -5,20 +5,20 @@
 	> Created Time: 五  5/12 16:13:13 2017
  ************************************************************************/
 #include "DevUevt.h"
-IMPL_LOGGER(DevUevtList);
+IMPL_LOGGER(DevUevt, logger);
 
-DevUevtList::DevUevtList(const string& cmd_type):HTTPRequest(cmd_type)
+DevUevt::DevUevt(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"in", std::make_pair(PARAM_TYPE_STRING, true)}, //采集数据
-               {"dev", std::make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
+    map<string, pair<string, bool> > base_params = {
+               {"in", make_pair(PARAM_TYPE_STRING, true)}, //采集数据
+               {"dev", make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
     };
     m_params.insert(base_params.begin(), base_params.end());
 
     tb_name = g_config_reader->get_string("dev_uevt_list.table");
  }
- DevUevtList::~DevUevtList()
+ DevUevt::~DevUevt()
  {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
  }
@@ -30,7 +30,7 @@ DevUevtList::DevUevtList(const string& cmd_type):HTTPRequest(cmd_type)
  * Author: Chen Kai(ischenkai.com)
  * Created Time:  一  5/15 15:32:55 2017
  *************************************************************************/
-void DevUevtList::doAssembleParam()
+void DevUevt::doAssembleParam()
 {
 
     HTTPRequest::doAssembleParam();
@@ -43,7 +43,7 @@ void DevUevtList::doAssembleParam()
  * Author: Chen Kai(ischenkai.com)
  * Created Time:  五  5/12 17:49:55 2017
  *************************************************************************/
-int DevUevtList::handle(json::Value& jsPara)
+int DevUevt::handle(json::Value& jsPara)
 {
     return 0;
 }

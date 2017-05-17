@@ -17,12 +17,12 @@ class RecordCache : public Thread{
         void LoadDB();
         void ResetDeviceRedis();
         void ResetRedis();
-        bool SaveToDB(const std::string&);
-        int AddToCache(std::vector<std::string>& keys, std::string& key, std::string& rawData, std::string pno="", std::string cno="");
-        int AddExecuteSql(const std::string& sql, int times=3);
+        bool SaveToDB(const string&);
+        int AddToCache(vector<string>& keys, string& key, string& rawData, string pno="", string cno="");
+        int AddExecuteSql(const string& sql, int times=3);
         static void *syncDB(void* data);
         static bool deviceInfoChange(json::Value jsCache, json::Value jsIn);
-        std::string getDeviceFingerprint(std::string &dataCrypt,std::string cno, std::string pno);
+        string getDeviceFingerprint(string &dataCrypt,string cno, string pno);
         int recordSize();
         ~RecordCache();
         Lock _db_lock;
@@ -31,13 +31,13 @@ class RecordCache : public Thread{
         void run();
         static RecordCache * _instance;
         static Lock _instance_lock;
-        std::map<std::string, std::string>  *device_fingerprint_info;
-        std::map<std::string, std::string>  *device_fingerprint_info_update;
-        std::map<std::string, std::string>  *device_fingerprint_info_buffer;
-        std::map<std::string, std::string>  *device_fingerprint_info_latest;
-        std::vector<std::pair<std::string, int> > *execute_sql;
+        map<string, string>  *device_fingerprint_info;
+        map<string, string>  *device_fingerprint_info_update;
+        map<string, string>  *device_fingerprint_info_buffer;
+        map<string, string>  *device_fingerprint_info_latest;
+        vector<pair<string, int> > *execute_sql;
         PGDBConnectionPool account_service_db_pool;
-        bool setValue(const std::string &key, const std::string &val);
+        bool setValue(const string &key, const string &val);
         bool getValue(const string& key, string& value);
         bool hasKey(const string& key, string &value);
         bool redisHasKey(const string& key, string &value);
@@ -46,7 +46,7 @@ class RecordCache : public Thread{
         bool delKey(const string& key);
         RedisConnectionPool *account_service_redis_pool;
         int pools_size;
-        std::string  _db_table_name;
+        string  _db_table_name;
         DECL_LOGGER(logger);
 };
 #endif

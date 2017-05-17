@@ -6,12 +6,13 @@
  ************************************************************************/
 
 #include "DevDevf.h"
-IMPL_LOGGER(DevDevf);
-DevDevf::DevDevf(const string& cmd_type):HttpReuest(cmd_type)
+IMPL_LOGGER(DevDevf, logger);
+
+DevDevf::DevDevf(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"info", std::make_pair(PARAM_TYPE_ARRAY, true)}, //info
+    map<string, pair<string, bool> > base_params = {
+               {"info", make_pair(PARAM_TYPE_ARRAY, true)}, //info
     };
     m_params.insert(base_params.begin(), base_params.end());
 

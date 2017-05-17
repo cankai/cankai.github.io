@@ -14,7 +14,7 @@ public:
     ~HTTPRequestHandler();
     int process(FCGX_Request* request);
     int render(FCGX_Request* request, HTTPRequest* http_req);
-    std::string get_request_cmd(FCGX_Request* request);
+    string get_request_cmd(FCGX_Request* request);
     HTTPRequestPool http_request_pool;
     void set_size(int size);
 

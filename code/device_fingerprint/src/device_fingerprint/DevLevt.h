@@ -6,6 +6,7 @@
  ************************************************************************/
 #ifndef _DEVLEVT_H
 #define _DEVLEVT_H
+#include "HTTPRequest.h"
 class DevLevt:public HTTPRequest
 {
     public:
@@ -19,6 +20,6 @@ class DevLevt:public HTTPRequest
         string code;//数组类型，0：ok，1：继续上传res 内容，2：更新属性上传列表，3：更新恶意程度
         int evl;//恶意度
         DECL_LOGGER(logger);
-}
+};
 #endif
 

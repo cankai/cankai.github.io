@@ -13,11 +13,11 @@ Lock RecordCache::_instance_lock ;
 
 RecordCache::RecordCache()
 {
-    device_fingerprint_info = new std::map<std::string, std::string>;//store all info no use
-    device_fingerprint_info_update = new std::map<std::string, std::string>;//no use
-    device_fingerprint_info_buffer = new std::map<std::string, std::string>;//data not in device_fingerprint_info not in redis not in pg
-    device_fingerprint_info_latest = new std::map<std::string, std::string>;//store latest data,in 5 second the same data can not be store twice
-    execute_sql = new std::vector<std::pair<std::string, int> >;
+    device_fingerprint_info = new map<string, string>;//store all info no use
+    device_fingerprint_info_update = new map<string, string>;//no use
+    device_fingerprint_info_buffer = new map<string, string>;//data not in device_fingerprint_info not in redis not in pg
+    device_fingerprint_info_latest = new map<string, string>;//store latest data,in 5 second the same data can not be store twice
+    execute_sql = new vector<pair<string, int> >;
     account_service_db_pool.m_host = g_config_reader->get_string("account_service.db.host", "localhost");
     account_service_db_pool.m_port = g_config_reader->get_string("account_service.db.port", "3306");
     account_service_db_pool.m_dbname = g_config_reader->get_string("account_service.db.dbname", "account_service");
@@ -28,8 +28,8 @@ RecordCache::RecordCache()
     account_service_db_pool.set_size(_device_fingerprint_info_connects);
 
     //redis
-    std::string redis_cluster_host = g_config_reader->get_string("account_service.redis.host.info", "10.33.47.51:6516,10.33.47.52:6518,10.33.47.53:6517");
-    std::string redis_cluster_passwd = g_config_reader->get_string("account_service.redis.host.passwd", "paicH23G1234");
+    string redis_cluster_host = g_config_reader->get_string("account_service.redis.host.info", "10.33.47.51:6516,10.33.47.52:6518,10.33.47.53:6517");
+    string redis_cluster_passwd = g_config_reader->get_string("account_service.redis.host.passwd", "paicH23G1234");
     int pool_size = g_config_reader->get_int("account_service.redis.connect.num", 5);
     int time_out = g_config_reader->get_int("account_service.redis.connect.timeout", 2000);
     int redis_sent_flag = g_config_reader->get_int("redis.sentinel.flag", 0);
@@ -65,7 +65,7 @@ RecordCache::~RecordCache()
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << "destruction function" << ")");
 }
 
-bool RecordCache::setValue(const std::string &key, const std::string &value)
+bool RecordCache::setValue(const string &key, const string &value)
 {
     if (!account_service_redis_pool->isActive())
     {
@@ -117,7 +117,7 @@ bool RecordCache::cacheHasKey(const string& key, string &value)
     //no reed to use mem cache
     return false;
 #if 0
-    std::map<std::string, std::string>::iterator infoCacheIt = device_fingerprint_info->find(key);
+    map<string, string>::iterator infoCacheIt = device_fingerprint_info->find(key);
     if (infoCacheIt != device_fingerprint_info->end())
     {
         value = infoCacheIt->second;
@@ -150,7 +150,7 @@ bool RecordCache::hasKey(const string& key, string &value)
     if (account_service_redis_pool->isActive())
     {
     //for accout service,the key in the db and the pg is different
-        std::string key_prefix = "account_";
+        string key_prefix = "account_";
         return cacheHasKey(key, value) || redisHasKey(key_prefix+key, value);
     }
     else
@@ -194,7 +194,7 @@ bool RecordCache::deviceInfoChange(json::Value jsCache, json::Value jsIn)
     return false;
 }
 
-int RecordCache::AddExecuteSql(const std::string& sql, int times)
+int RecordCache::AddExecuteSql(const string& sql, int times)
 {
     //for debug
     //return 1;
@@ -204,12 +204,12 @@ int RecordCache::AddExecuteSql(const std::string& sql, int times)
     _instance_lock.unlock();
     return 1;
 }
-int RecordCache::AddToCache(std::vector<std::string>& keys, std::string& key, std::string& rawData, std::string cno, std::string pno)
+int RecordCache::AddToCache(vector<string>& keys, string& key, string& rawData, string cno, string pno)
 {
     LOG4CPLUS_DEBUG(logger,"AddToCache run");
     bool find = false;
-    std::string cacheDeviceInfo = "";
-    std::vector<std::string>::iterator it = keys.begin();
+    string cacheDeviceInfo = "";
+    vector<string>::iterator it = keys.begin();
     for(; it != keys.end(); ++it)
     {
         if(hasKey(*it, cacheDeviceInfo))
@@ -246,9 +246,9 @@ int RecordCache::AddToCache(std::vector<std::string>& keys, std::string& key, st
         //no need mem cache
         //(*device_fingerprint_info)[key] = rawData;
         //create sql
-        std::string dataTmp = rawData;
+        string dataTmp = rawData;
         Utility::replace_all(dataTmp, "'" , "''");
-        std::stringstream dfSql;
+        stringstream dfSql;
         //dfSql << "INSERT INTO " << _db_table_name << "(deviceid,data,cno,pno,insert_date) values('" << key << "','" << dataTmp << "','" << cno << "','" << pno << "', now())";
         dfSql << "INSERT INTO " << _db_table_name << "(deviceid,data,cno,pno,insert_date) values('" << key << "','" << dataTmp << "','" << cno << "','" << pno << "', '" << Utility::get_local_datestring() << "')";
         LOG4CPLUS_DEBUG(logger,"totoaly new device:"<< dfSql.str());
@@ -256,7 +256,7 @@ int RecordCache::AddToCache(std::vector<std::string>& keys, std::string& key, st
         {
             LOG4CPLUS_DEBUG(logger,"totoaly new device insert into key val");
             //setValue(key, rawData); no need to set data
-            std::string key_prefix = "account_";
+            string key_prefix = "account_";
             setValue(key_prefix+key, "v");
         }
         else
@@ -308,7 +308,7 @@ void  RecordCache::ResetDeviceRedis()
 
         RES_RESULT * result = query.Records();
         while(result->next()){
-            std::string deviceid = result->get_value_data();
+            string deviceid = result->get_value_data();
             setValue(deviceid, "v");
         }
     }
@@ -356,8 +356,8 @@ void  RecordCache::ResetRedis()
 
         RES_RESULT * result = query.Records();
         while(result->next()){
-            std::string deviceid = result->get_value_data();
-            std::string key_prefix = "account_";
+            string deviceid = result->get_value_data();
+            string key_prefix = "account_";
             delKey(deviceid);
             setValue(key_prefix+deviceid, "v");
         }
@@ -410,30 +410,30 @@ void  RecordCache::LoadDB()
         RES_RESULT * result = query.Records();
         while(result->next()){
             int id = atol(result->get_value_data());
-            std::string deviceid = result->get_value_data();
-            std::string data = result->get_value_data();
+            string deviceid = result->get_value_data();
+            string data = result->get_value_data();
             (*device_fingerprint_info)[deviceid] = data;
             //setValue(deviceid, data); no need to set data
-            std::string key_prefix = "account_";
+            string key_prefix = "account_";
             setValue(key_prefix+deviceid, "v");
         }
     }
     LOG4CPLUS_DEBUG(logger, "load data total: " << recordSize());
 }
 
-bool RecordCache::SaveToDB(const std::string& sql_buf)
+bool RecordCache::SaveToDB(const string& sql_buf)
 {
     //if exist in df db then return true
     #if 0
-    std::string tbName = sql_buf.substr(12,18);
+    string tbName = sql_buf.substr(12,18);
     if (tbName == "device_fingerprint")
     {
-        std::vector<std::string> vstr;
+        vector<string> vstr;
         int r = Utility::split(sql_buf, "'", vstr);
         if (r >= 3)
         {
-            const std::string df = vstr[1];
-            std::string dbData;
+            const string df = vstr[1];
+            string dbData;
             if(pgHasKey(df, dbData))
             {
                 return true;
@@ -467,7 +467,7 @@ void RecordCache::run()
             _instance_lock.lock();
             try
             {
-                std::vector<std::pair<std::string, int> >*sql = new std::vector<std::pair<std::string, int> >(*execute_sql);
+                vector<pair<string, int> >*sql = new vector<pair<string, int> >(*execute_sql);
                 if(sql)
                 {
                     //sql->insert(execute_sql->begin(), execute_sql->end());
@@ -490,7 +490,7 @@ void RecordCache::run()
                 }
             }
         
-            catch (std::exception& e)
+            catch (exception& e)
             {
                 _instance_lock.unlock();
                 LOG4CPLUS_ERROR(logger, "Thread exception: "<<e.what());
@@ -508,12 +508,12 @@ void RecordCache::run()
 void *RecordCache::syncDB(void* data)
 {
     pthread_detach(pthread_self());//set thread to unjoinable,so that it can realase resource after exit
-    std::vector<std::pair<std::string, int> > *sqls = (std::vector<std::pair<std::string, int> >*)data;
+    vector<pair<string, int> > *sqls = (vector<pair<string, int> >*)data;
     LOG4CPLUS_DEBUG(logger, "sync db size:" << sqls->size());
     RecordCache *record_cache = RecordCache::GetInstance();
     try
     {
-        for(std::vector<std::pair<std::string, int> >::iterator it=sqls->begin(); it!=sqls->end(); ++it)
+        for(vector<pair<string, int> >::iterator it=sqls->begin(); it!=sqls->end(); ++it)
         {
             //if save false, then add it to execute_sql
             if(!record_cache->SaveToDB(it->first))
@@ -524,7 +524,7 @@ void *RecordCache::syncDB(void* data)
         }
     }
 
-    catch (std::exception& e)
+    catch (exception& e)
     {
         LOG4CPLUS_ERROR(logger, "Thread exception: "<<e.what());
     }
@@ -537,15 +537,15 @@ void *RecordCache::syncDB(void* data)
 }
 
 
-std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string cno, std::string pno)
+string RecordCache::getDeviceFingerprint(string &dataCrypt,string cno, string pno)
 {
-    std::string deviceID="";
-    std::vector<std::string> vDeviceID;
+    string deviceID="";
+    vector<string> vDeviceID;
     json::Value js = json::Deserialize(dataCrypt);
     json::Object obj = js.ToObject();
     if(js.HasKey("ads.id"))
     {
-        std::string tmp = obj["ads.id"].ToString();
+        string tmp = obj["ads.id"].ToString();
         if(!(tmp=="") && !(tmp.length() <=8))
         {
             deviceID = "df-ads.id-" + obj["ads.id"].ToString();
@@ -554,7 +554,7 @@ std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string
     }
     if(js.HasKey("token"))
     {
-        std::string tmp = obj["token"].ToString();
+        string tmp = obj["token"].ToString();
         if(!(tmp=="") && !(tmp.length() <=8))
         {
             deviceID = "df-token-"+obj["token"].ToString();
@@ -574,11 +574,11 @@ std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string
         json::Object objData = jsData.ToObject();
         if(jsData.HasKey("clientSensorInfo"))
         {
-            std::string clientSensorInfo = objData["clientSensorInfo"].ToString();
+            string clientSensorInfo = objData["clientSensorInfo"].ToString();
             if(clientSensorInfo.size() > 1)
             {
                 LOG4CPLUS_ERROR(logger, "before unzip:"<<clientSensorInfo<<":end");
-                std::string unzipSensorInfo = Utility::decompress(clientSensorInfo);
+                string unzipSensorInfo = Utility::decompress(clientSensorInfo);
                 LOG4CPLUS_ERROR(logger, "after unzip:"<<unzipSensorInfo<<":end");
                 if(unzipSensorInfo.size() > 2)
                 {
@@ -589,10 +589,10 @@ std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string
         if(objData.HasKey("clientAppList"))
         {
 
-            std::string clientAppList = objData["clientAppList"].ToString();
+            string clientAppList = objData["clientAppList"].ToString();
             if(clientAppList.size() > 0)
             {
-                std::string unzipAppList = Utility::decompress(clientAppList);
+                string unzipAppList = Utility::decompress(clientAppList);
                 if(unzipAppList.size() > 2)
                 {
                     jsData["clientAppList"] = unzipAppList;
@@ -600,9 +600,9 @@ std::string RecordCache::getDeviceFingerprint(std::string &dataCrypt,std::string
             }
         }
         //int store_rt = AddToCache(vDeviceID, deviceID, dataCrypt);
-        //std::string unzipData = json::Serialize(jsData);
+        //string unzipData = json::Serialize(jsData);
         dataCrypt = json::Serialize(jsData);
-        std::string dataTmp = dataCrypt;
+        string dataTmp = dataCrypt;
         LOG4CPLUS_ERROR(logger,"data:"<<dataCrypt);
         Utility::replace_all(dataTmp, "\"[" , "[");
         LOG4CPLUS_ERROR(logger,"data:"<<dataCrypt);

@@ -7,15 +7,15 @@
  ************************************************************************/
 
 #include "DevUpList.h"
-IMPL_LOGGER(DevUpList);
+IMPL_LOGGER(DevUpList, logger);
 
 DevUpList::DevUpList(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"os", std::make_pair(PARAM_TYPE_STRING, true)}, //操作系统
-               {"sv", std::make_pair(PARAM_TYPE_STRING, true)}, //系统版本号
-               {"nt", std::make_pair(PARAM_TYPE_STRING, true)} //网络类型
+    map<string, pair<string, bool> > base_params = {
+               {"os", make_pair(PARAM_TYPE_STRING, true)}, //操作系统
+               {"sv", make_pair(PARAM_TYPE_STRING, true)}, //系统版本号
+               {"nt", make_pair(PARAM_TYPE_STRING, true)} //网络类型
     };
     m_params.insert(base_params.begin(), base_params.end());
 

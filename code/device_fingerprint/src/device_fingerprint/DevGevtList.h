@@ -6,6 +6,7 @@
  ************************************************************************/
 #ifndef _DEVGEVTLIST_H
 #define _DEVGEVTLIST_H
+#include "HTTPRequest.h"
 class DevGevtList:public HTTPRequest
 {
     public:
@@ -19,6 +20,6 @@ class DevGevtList:public HTTPRequest
         string res;
         int evl;
         DECL_LOGGER(logger);
-}
+};
 #endif
 

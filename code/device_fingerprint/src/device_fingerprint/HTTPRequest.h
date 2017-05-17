@@ -17,7 +17,7 @@ extern ConfigReader *g_config_reader;
 class HTTPRequest
 {
 public:
-    HTTPRequest(const std::string &cmd_type);
+    HTTPRequest(const string &cmd_type);
     HTTPRequest(){}
 
     virtual ~HTTPRequest();
@@ -27,27 +27,28 @@ public:
     bool paraMatch(json::Value& jsPara);
     virtual void doAssembleParam();
     int doAssembleSql();
-    std::string m_cmd_type;
+    const string m_cmd_type;
     
     //para
-    std::map<std::string, std::pair<std::string, bool> > m_params;
+    map<string, pair<string, bool> > m_params;
 
-    std::map<std::string, std::string> urlParam;//request params map
+    map<string, string> urlParam;//request params map
     json::Value jsReturn;
     json::Value wrapperJsReturn;
     //tb
-    std::string tb_name;
-    std::string store_sql;
+    string tb_name;
+    string store_sql;
 
     int status;//200 or 500 表示服务状态
+    string msg;//提示描述信息
 private:
     
     //rt 
     int pr;//协议版本
-    std::string aid;//应用标识
-    std::string eid;//消息id
-    std::string tid;//应用启动时生产，退出时结束
-    std::string msg;//提示描述信息
+    string aid;//应用标识
+    string eid;//消息id
+    string tid;//应用启动时生产，退出时结束
+    string skv;
 
     DECL_LOGGER(logger);
 };

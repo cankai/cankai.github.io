@@ -19,7 +19,7 @@
 #define DEV_UP_LIST                 "/dev/uplist" //初始化上报信息查询接口
 #define DEV_INIT                    "/dev/devf"   //初始化接口
 #define DEV_GET_TIME_LIST           "/dev/gtmlist"//定时上传列表获取
-#define DEV_TIMER                   "/dev/gtmlist"//定时上传接口
+#define DEV_TIMER                   "/dev/timer"  //定时上传接口
 #define DEV_GET_EVENT_LIST          "/dev/gevlist"//事件上传列表获取
 #define DEV_UP_EVENT                "/dev/uevt"   //延立即事件上接口
 #define DEV_LATER_EVENT             "/dev/levt"   //延时事件上传接口

@@ -1,17 +1,13 @@
 #include "HTTPRequestHandler.h"
 #include "Defines.h"
-#include "AccountReg.h"
-#include "AccountRegFeedback.h"
-#include "AccountRegValidFB.h"
-#include "AccountLogin.h"
-#include "AccountLoginFB.h"
-#include "AccountLoginValidFB.h"
-#include "AccountCardBind.h"
-#include "AccountCardBindFB.h"
-#include "AccountCardUnbind.h"
-#include "AccountCardUnbindFB.h"
-#include "AccountPay.h"
-#include "AccountPayFB.h"
+#include "DevBuss.h"
+#include "DevDevf.h"
+#include "DevGevtList.h"
+#include "DevGtmList.h"
+#include "DevLevt.h"
+#include "DevTimer.h"
+#include "DevUevt.h"
+#include "DevUpList.h"
 #include "fastcgi/fcgi_lib.h"
 #include <sys/time.h>
 
@@ -34,10 +30,10 @@ void HTTPRequestHandler::set_size(int size)
 }
 
 
-std::string HTTPRequestHandler::get_request_cmd(FCGX_Request* request)
+string HTTPRequestHandler::get_request_cmd(FCGX_Request* request)
 {
     char *request_method = FCGX_GetParam("SCRIPT_NAME", request->envp);
-    return std::string(request_method);
+    return string(request_method);
 }
 
 int HTTPRequestHandler::process(FCGX_Request* request)
@@ -93,7 +89,7 @@ int HTTPRequestHandler::render(FCGX_Request* request, HTTPRequest* http_req)
 
 HTTPRequest* HTTPRequestHandler::create(FCGX_Request* request)
 {
-    std::string cmd_type = get_request_cmd(request);
+    string cmd_type = get_request_cmd(request);
     HTTPRequest* http_req = NULL;
     return http_request_pool.get_http_request(cmd_type);
 }

@@ -6,16 +6,16 @@
 #include <cstdlib>
 
 IMPL_LOGGER(HTTPRequest,logger);
-HTTPRequest::HTTPRequest(const std::string &cmd_type)
+HTTPRequest::HTTPRequest(const string &cmd_type)
 :m_cmd_type(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"pr", std::make_pair(PARAM_TYPE_INT, true)}, //协议版本
-               {"aid", std::make_pair(PARAM_TYPE_STRING, true)}, //应用标示
-               {"eid", std::make_pair(PARAM_TYPE_STRING, true)}, //消息id
-               {"tid", std::make_pair(PARAM_TYPE_STRING, true)}, //应用启动时生成/退出时结束
-               {"skv", std::make_pair(PARAM_TYPE_STRING, true)} //sdk version
+    map<string, pair<string, bool> > base_params = {
+               {"pr", make_pair(PARAM_TYPE_INT, true)}, //协议版本
+               {"aid", make_pair(PARAM_TYPE_STRING, true)}, //应用标示
+               {"eid", make_pair(PARAM_TYPE_STRING, true)}, //消息id
+               {"tid", make_pair(PARAM_TYPE_STRING, true)}, //应用启动时生成/退出时结束
+               {"skv", make_pair(PARAM_TYPE_STRING, true)} //sdk version
     };
 
     m_params.insert(base_params.begin(), base_params.end());
@@ -53,11 +53,11 @@ bool HTTPRequest::paraMatch(json::Value& jsPara)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
     json::Object objPara = jsPara.ToObject();
-    for (std::map<std::string, std::pair<std::string, bool> >::iterator it = m_params.begin(); 
+    for (map<string, pair<string, bool> >::iterator it = m_params.begin(); 
          it != m_params.end(); ++it)
     {
-        std::string key = it->first;
-        std::string type = it->second.first;
+        string key = it->first;
+        string type = it->second.first;
         if(jsPara.HasKey(key))
         {
             json::Value value = objPara[key];
@@ -143,7 +143,7 @@ int HTTPRequest::handle(FCGX_Request* request)
             return -2;
         }
     }
-    catch (std::exception& e)
+    catch (exception& e)
     {
         status = HTTP_STATUS_SVR_SIE;
         msg = HTTP_500_REASON_PHRASE;
@@ -178,30 +178,11 @@ int HTTPRequest::handle(FCGX_Request* request)
 int HTTPRequest::handle(json::Value& jsPara) {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
     try{
-        json::Object jsObj = jsPara.ToObject();
-        //proc = jsObj["proc"].ToInt();
-        if (jsObj["proc"].IsString())
-        {
-            proc = atoi(jsObj["proc"].ToString().c_str());
-        }
-        else if (jsObj["proc"].IsNumeric())
-        {
-            proc = jsObj["proc"].ToInt();
-        }
-        else
-        {
-            status = HTTP_STATUS_SVR_SIE;
-            msg = HTTP_500_REASON_PHRASE;
-            LOG4CPLUS_WARN(logger, "Type error");
-            return -1;
-        }
-        eid = jsObj["eid"].ToString();
-        tid = jsObj["tid"].ToString();
         msg = "";
         status = 200;
         return 0;
     }
-    catch (std::exception& e)
+    catch (exception& e)
     {
         status = HTTP_STATUS_SVR_SIE;
         msg = HTTP_500_REASON_PHRASE;
@@ -219,7 +200,6 @@ int HTTPRequest::handle(json::Value& jsPara) {
 }
 void HTTPRequest::doAssembleParam()
 {
-    jsReturn["proc"] = proc;
     jsReturn["eid"] = eid;
     jsReturn["status"] = status;
     jsReturn["msg"] = msg;
@@ -229,13 +209,13 @@ int HTTPRequest::doAssembleSql()
 {
     //urlParam
     try{
-        std::string keys;
-        std::string values;
-        for(std::map<std::string, std::string>::iterator it = urlParam.begin();
+        string keys;
+        string values;
+        for(map<string, string>::iterator it = urlParam.begin();
                                                          it != urlParam.end(); ++it)
         {
-            std::string key = it->first;
-            std::string value = it->second;
+            string key = it->first;
+            string value = it->second;
             if(key.compare("from")==0)
             {
                 keys.append("channel").append(",");
@@ -245,7 +225,7 @@ int HTTPRequest::doAssembleSql()
                 keys.append(key).append(",");
             }
     
-            std::string type;
+            string type;
             if(m_params.find(key) != m_params.end())
             {
                 type = m_params[key].first;
@@ -277,13 +257,13 @@ int HTTPRequest::doAssembleSql()
             else;
         }
     
-        std::stringstream sql_buff;
+        stringstream sql_buff;
 
         sql_buff << "INSERT INTO " << tb_name << "(" << keys << "createtime)" << "VALUES(" << values << "'" << Utility::get_local_datestring() << "')";
         RecordCache::GetInstance()->AddExecuteSql(sql_buff.str());
         return 0;
     }
-    catch (std::exception& e)
+    catch (exception& e)
     {
         status = HTTP_STATUS_SVR_SIE;
         msg = HTTP_500_REASON_PHRASE;

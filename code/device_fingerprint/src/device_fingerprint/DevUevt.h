@@ -5,6 +5,8 @@
 	> Created Time: 五  5/12 16:13:10 2017
  ************************************************************************/
 #ifndef _DEVUEVT_H
+#define _DEVUEVT_H
+#include "HTTPRequest.h"
 class DevUevt:public HTTPRequest
 {
     public:
@@ -19,7 +21,6 @@ class DevUevt:public HTTPRequest
         string code;//数组类型，0：ok，1：继续上传res 内容，2：更新属性上传列表，3：更新恶意程度
         int evl;//恶意度
         DECL_LOGGER(logger);
-}
-#define _DEVUEVT_H
+};
 #endif
 

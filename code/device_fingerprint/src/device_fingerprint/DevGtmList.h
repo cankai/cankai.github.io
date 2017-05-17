@@ -6,10 +6,11 @@
  ************************************************************************/
 #ifndef _DEVGTMLIST_H
 #define _DEVGTMLIST_H
+#include "HTTPRequest.h"
 class DevGtmList:public HTTPRequest
 {
     public:
-        DevGtmList();
+        DevGtmList(const string&);
         ~DevGtmList();
         void doAssembleParam();
         int handle(json::Value& jsPara);
@@ -21,6 +22,6 @@ class DevGtmList:public HTTPRequest
         //上传间隔，单位s
         int tv;
         DECL_LOGGER(logger);
-}
+};
 #endif
 

@@ -7,6 +7,7 @@
 
 #ifndef _DEVDEVF_H
 #define _DEVDEVF_H
+#include "HTTPRequest.h"
 class DevDevf:public HTTPRequest
 {
     public:
@@ -22,5 +23,5 @@ class DevDevf:public HTTPRequest
         string res;
         int evi;
         DECL_LOGGER(logger);
-}
+};
 #endif

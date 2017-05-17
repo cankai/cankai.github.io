@@ -5,14 +5,14 @@
 	> Created Time: 五  5/12 16:13:43 2017
  ************************************************************************/
 #include "DevLevt.h"
-IMPL_LOGGER(DevLevt);
+IMPL_LOGGER(DevLevt, logger);
 
 DevLevt::DevLevt(const string& cmd_type):HTTPRequest(cmd_type)
 {
     LOG4CPLUS_DEBUG(logger, __FUNCTION__ << "(" << this << ")");
-    std::map<std::string, std::pair<std::string, bool> > base_params = {
-               {"in", std::make_pair(PARAM_TYPE_STRING, true)}, //采集数据
-               {"dev", std::make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
+    map<string, pair<string, bool> > base_params = {
+               {"in", make_pair(PARAM_TYPE_STRING, true)}, //采集数据
+               {"dev", make_pair(PARAM_TYPE_STRING, true)}, //设备指纹
     };
     m_params.insert(base_params.begin(), base_params.end());
 

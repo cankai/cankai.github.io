@@ -6,6 +6,7 @@
  ************************************************************************/
 #ifndef _DEVTIMER_H
 #define _DEVTIMER_H
+#include "HTTPRequest.h"
 class DevTimer:public HTTPRequest
 {
     public:
@@ -20,6 +21,6 @@ class DevTimer:public HTTPRequest
         int tv;//当 code等于2时出现
         int evl;
         DECL_LOGGER(logger);
-}
+};
 #endif
 

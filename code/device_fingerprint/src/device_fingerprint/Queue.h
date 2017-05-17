@@ -8,8 +8,8 @@
 #include <set>
 #include <vector>
 
-using std::set;
-using std::vector;
+using set;
+using vector;
 template <class T> 
 class Pool{
     T*  m_buffer;
