@@ -39,7 +39,7 @@ class HTTPRequestPool {
     vector<pair<HTTPRequest*, bool> >dev_devf;
     vector<pair<HTTPRequest*, bool> >dev_gtm_list;
     vector<pair<HTTPRequest*, bool> >dev_timer;
-    vector<pair<HTTPRequest*, bool> >dev_gevlist;
+    vector<pair<HTTPRequest*, bool> >dev_gevt_list;
     vector<pair<HTTPRequest*, bool> >dev_uevt;
     vector<pair<HTTPRequest*, bool> >dev_levt;
     vector<pair<HTTPRequest*, bool> >dev_buss;
