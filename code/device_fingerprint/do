@@ -1,7 +1,0 @@
-1.support mysql
-2.support pgsql
-3.support pgsql 9.3 support json read and json write
-2.support redis
-17.02.20:dealing thread and revive thread detach
-one thread accept request and add it to list;
-ont thread loop for undone request
