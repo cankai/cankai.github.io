@@ -342,7 +342,7 @@
 
 <h3>九、找到链表环的入口</h3>
 <p>如果链表存在环，那么一定是快指针先进入环线，然后慢指针进入环线，假设进入环线的点是C，此时快指针的点为K，那么经过K-C个循环，快慢指针将重合,重合的时候如下图</p>
-<p><img alt="circle" src="https://i.loli.net/2017/08/05/5985d54601bd2.png"></p>
+<p><img alt="circle" src="https://i.loli.net/2017/08/05/5985d54601bd2.png" title="带环链表图"></p>
 <p>设 begin 到 connect 的距离为lenBC, connect 到 together 的距离为lenCT，环的长度为lenCircle，那么两个指针在together重合的时候，慢指针走了lenBC + lenCT 个距离，块指针走了lenBC + lenCT + n x lenCircle，又因为快指针走的路程为慢指针的两倍，所以lenBC + lenCT = n x lenCircle；那么如果此时由一个指针从指针头出发，另外一个指针由together点出发，以相同的步长，它们一定会在connect再次重合。</p>
 <div class="highlight"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">findCircle</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">list</span><span class="p">)</span>
 <span class="p">{</span>
