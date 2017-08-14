@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>Chen Kai's land. - 链表</title>
+        <title>tcpdump 的使用</title>
         <meta charset="utf-8" />
 
 
@@ -41,42 +41,42 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/linklist.html" rel="bookmark" title="Permalink to 链表问题总结">链表问题总结</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-08-05T10:20:00+08:00"> 2017-08-05 10:20:00 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>链表是最常用的一种数据结构，是一种线性表，数据在表里面并不是按线性的顺序存储，每个链表节点都有一个数据域，一个指针域，通过节点中的指针，来将所有的数据串接起来，由于不是顺序存储，所以链表的插入和删除效率高，为O(1)，访问特定节点的时间为O(n)；链表没有固定大小，可以灵活且充分的利用存储数据，并随时进行扩展和收缩；链表作为一种基础数据结构，在面试中几乎都会被考到。下面做了一些总结。</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="/linklist.html" rel="bookmark" title="Permalink to 链表问题总结">Read more <i class="icon-arrow-right"></i></a></div>
 
 
+            <header>
+              <h2 class="entry-title">
+                <a href="/tcpdump.html" rel="bookmark"
+                   title="Permalink to tcpdump 的使用">tcpdump 的使用</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-08-13T11:27:00+08:00">
+                2017-08-13 11:27:00
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>tcpdump 是Linux下最常用的抓包与分析工具，下面对工具进行一些总结。</p>
+<h3>1、基本使用</h3>
+<p>tcpdump 通常需要root 权限，所以执行命令的时候需要切换到root 用户。</p>
+<h3>2、使用语法</h3>
+<p>如果不加配置的使用，tcpdump 会将本机的所有数据包都抓下来，不便于分析，因此可以添加一些过滤选项，来抓取所需要的数据包。
+-i 选择所需要抓取的网卡，可以通过ifconfig 来查看所有网卡，并选择所需要的，例：tcpdump -i en0 表示第一块网卡；tcpdump -i lo0 表示回环地址，当监听的地址为127.0.0.1 的时候，需要选择lo0
+host 过滤主机ip；例：tcpdump -i en0 host 192.168.1.6 表示抓取所有地址为192.168.1.6 的数据。host 前还可以添加src 或者 dst 来限制源或目的地址。
+port 过滤端口；例：tcpdump -i en0 host 192.168.1.6 and dst port 80 表示抓取所有地址为192.168.1.6 而且目的端口为80 的包
+tcpdump 的语法支持and 和 or 还有（）操作，可以并列的使用多重选项，另外还支持协议过滤：tcpdump -i en0 tcp 表示只抓取tcp包。
+因为有些时候抓包的速度很快，在终端上很快的刷新，人眼不好分析，所以有些时候需要将抓包定向到文件：tcpdump -i en0 -w a.cap 表示定向到a.cap 文件，然后通过wireshark 打开分析。数据包过多可以通过 -c 来控制抓包的个数。 tcpdump -i en0 -c 3 -w 3hand.cap</p>
+            </div><!-- /.entry-content -->
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/lian-biao.html">链表</a>
-                                            <a class="danger label" href="/tag/pai-xu.html">排序</a>
-                                </div>
-
-
-
-                        </article></li>
-                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -100,10 +100,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->
