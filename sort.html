@@ -245,6 +245,7 @@
     <span class="k">for</span><span class="p">(;</span> <span class="n">l</span><span class="o">&lt;=</span> <span class="n">end</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="c1">//从左右孩子中间选择一个较大的作为比较值</span>
+        <span class="c1">//l 表示较大的值得索引</span>
         <span class="k">if</span><span class="p">(</span><span class="n">l</span><span class="o">&lt;</span><span class="n">end</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">l</span><span class="o">++</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="n">tmp</span> <span class="o">&gt;=</span> <span class="n">arr</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
@@ -256,12 +257,14 @@
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
 <span class="kt">void</span> <span class="nf">heapSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1">//对于heap sort, 通过 parant to get left son and right son,lson=p*2+1, rson=p*2+2;</span>
     <span class="c1">//get parant, p=(son-1)/2</span>
     <span class="c1">//首先建立一个大顶堆，然后交换根节点和最后，然后进行堆恢复，再次交换，恢复</span>
     <span class="c1">//build a heap</span>
+    <span class="c1">//i = n/2 - 1 为最后一个父节点索引位置</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">max_heap_down</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
