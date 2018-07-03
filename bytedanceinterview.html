@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>今日头条面试记</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">Chen Kai's land. <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/bytedanceinterview.html" rel="bookmark"
+                   title="Permalink to 今日头条面试记">今日头条面试记</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-09-13T22:20:00+08:00">
+                2017-09-13 22:20:00
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>今日头条的面试分为两部分，一部分是算法与编码，一部分就是闲聊技术了，算法与编码那部分感觉达得还OK，题目记录下来。</p>
+<h3>一、链表相加</h3>
+<p>有两个链表，表示两个数字，数字高位位于链表前面，求两个链表的说代表的数字的和，输出和所代表的链表，例如：链表1（1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7-&gt;8),链表2（7-&gt;8-&gt;9)，那么输出的链表应该是(1-&gt;2-&gt;3-&gt;4-&gt;6-&gt;4-&gt;6-&gt;7);因为链表的操作是从链表头到链表尾循环，而数字的加分是低位到高位顺序相加，因此可以先将链表翻转，然后相加。</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Node</span> <span class="n">Node</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Node</span><span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="n">Node</span><span class="o">*</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>二、数组区间求值</h3>
+<p>给出一个数组，代表在一个二维空间里面的山的高度，两个山峰之间是山谷，山谷中可以存雨水，求当前数组中，可以存多少水量。
+<img alt="rainwatertrap.png" src="https://i.loli.net/2017/09/14/59ba97f508d83.png">
+定义：山峰：两边都比当前数字小。
+所以只要找到两个山峰，求两个山峰之间的水量就好了；例外情况：当左边山峰已经固定，如果右边出现一个山峰，比左边的山峰矮，那么这个山峰不为山谷的左边，除非左边已经没有更高的山峰。笔试的时候是在电脑上写题目，两个题目四十分钟，这一题写出来有瑕疵。</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">blockContaisWater</span><span class="p">(</span><span class="kt">int</span> <span class="n">block</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">beginV</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">endV</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">waterFloor</span> <span class="o">=</span> <span class="n">beginV</span> <span class="o">&gt;=</span> <span class="n">endV</span> <span class="o">?</span> <span class="nl">endV</span> <span class="p">:</span> <span class="n">beginV</span><span class="p">;</span><span class="c1">//水平面为两个山峰最矮的</span>
+    <span class="kt">int</span> <span class="n">waters</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/interview.html">interview</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/mian-shi.html">面试</a></li>
+		<li><a href="/category/suan-fa.html">算法</a></li>
+		<li><a href="/category/suan-fa-shu-ju-jie-gou.html">算法,数据结构</a></li>
+		<li><a href="/category/wang-luo.html">网络</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+</body>
+</html>
