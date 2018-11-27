@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>Chen Kai's land. - IPC</title>
+        <title>Golang 动态生成版本信息</title>
         <meta charset="utf-8" />
 
 
@@ -41,42 +41,47 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/ipc.html" rel="bookmark" title="Permalink to Linux 进程间通信">Linux 进程间通信</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-08-20T20:41:00+08:00"> 2017-08-20 20:41:00 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>Linux 是一个多进程多用户操作系统，不同的进程有不同的地址空间进行隔离，但是不同进程之间的通信是必须的，因此各种IPC手段应运而生。</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="/ipc.html" rel="bookmark" title="Permalink to Linux 进程间通信">Read more <i class="icon-arrow-right"></i></a></div>
 
 
+            <header>
+              <h2 class="entry-title">
+                <a href="/golang-dong-tai-sheng-cheng-ban-ben-xin-xi.html" rel="bookmark"
+                   title="Permalink to Golang 动态生成版本信息">Golang 动态生成版本信息</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2018-11-05T14:52:00+08:00">
+                2018-11-05 14:52:00
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>在编译Golang 的时候, 可以通过环境变量配置版本信息.然后通过os.Getenv 来读取变量, 设置版本, 也可以通过在编译的时候通过编译参数设置版本,</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/linux.html">Linux</a>
-                                            <a class="danger label" href="/tag/ipc.html">IPC</a>
-                                </div>
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">var</span> <span class="n">Version</span> <span class="o">=</span> <span class="s2">&quot;Version default&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s2">&quot;Version is:&quot;</span><span class="p">,</span> <span class="n">Version</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
 
 
+<p>go run -ldflags "-X main.Version=1.5" hello.go</p>
+<p>然后运行的时候,就可以获得版本</p>
+            </div><!-- /.entry-content -->
 
-                        </article></li>
-                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -103,10 +108,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

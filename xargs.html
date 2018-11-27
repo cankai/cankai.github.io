@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>Chen Kai's land. - IPC</title>
+        <title>处理xargs 带空格的文件</title>
         <meta charset="utf-8" />
 
 
@@ -41,42 +41,35 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/ipc.html" rel="bookmark" title="Permalink to Linux 进程间通信">Linux 进程间通信</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2017-08-20T20:41:00+08:00"> 2017-08-20 20:41:00 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>Linux 是一个多进程多用户操作系统，不同的进程有不同的地址空间进行隔离，但是不同进程之间的通信是必须的，因此各种IPC手段应运而生。</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="/ipc.html" rel="bookmark" title="Permalink to Linux 进程间通信">Read more <i class="icon-arrow-right"></i></a></div>
 
 
+            <header>
+              <h2 class="entry-title">
+                <a href="/xargs.html" rel="bookmark"
+                   title="Permalink to 处理xargs 带空格的文件">处理xargs 带空格的文件</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2018-11-05T10:15:00+08:00">
+                2018-11-05 10:15:00
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/chen-kai.html"> Chen Kai</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>需要批量处理一批文件可以使用find + xargs 来处理, 但当文件名包含有空格的时候,就好报错,因为空格会被处理为文件名的分割符符, 然后报文件不存在,可以使用print0参数来处理, print0输出的find 文件是以null 为分割, xargs 也可以通过-0, 接收处理以null 为分隔符的输入, 于是就可以正确解决了.</p>
+<div class="highlight"><pre><span></span>find . -type f -print0 <span class="p">|</span> xargs -0 rm -rf
+</pre></div>
+            </div><!-- /.entry-content -->
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/linux.html">Linux</a>
-                                            <a class="danger label" href="/tag/ipc.html">IPC</a>
-                                </div>
-
-
-
-                        </article></li>
-                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -103,10 +96,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->
